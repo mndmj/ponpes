@@ -18,11 +18,10 @@
   <div class="wrapper">
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+    <nav class="main-header navbar navbar-expand-md navbar-success navbar-dark border-0">
       <div class="container">
         <a href="<?= base_url() ?>" class="navbar-brand">
-          <img src="<?= base_url() ?>/assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-          <!-- <span class="brand-text font-weight-light">PPDB PONPES Al-Iman</span> -->
+          <img src="<?= base_url() ?>/assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8" />
         </a>
 
         <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +75,7 @@
         <div class="container">
           <div class="row">
 
-            <!-- IKI JUMBOTRON -->
+            <!-- INI JUMBOTRON -->
             <?= $this->renderSection('content') ?>
 
           </div>
@@ -94,7 +93,7 @@
     <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
-    <footer class="main-footer text-center">
+    <footer class="main-footer bg-success border-0 text-center">
       <strong>Copyright &copy; 2022.</strong>
     </footer>
   </div>
@@ -108,8 +107,6 @@
   <script src="<?= base_url() ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="<?= base_url() ?>/assets/dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <!-- <script src="<?= base_url() ?>/assets/dist/js/demo.js"></script> -->
 </body>
 
 </html>
