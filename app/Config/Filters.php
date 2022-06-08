@@ -52,6 +52,7 @@ class Filters extends BaseConfig
                     'pendidikan', 'pendidikan/*',
                     'agama', 'agama/*',
                     'user', 'user/*',
+                    'penghasilan', 'penghasilan/*',
                 ]
             ],
             'toolbar',

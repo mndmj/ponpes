@@ -74,10 +74,10 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="<?= base_url('assets') ?>/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+            <img src="<?= base_url('foto') ?>/<?= session()->get('foto') ?>" class="img-circle elevation-2">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Muhammad Nasrullah</a>
+            <a href="#" class="d-block"><?= session()->get('nama_user') ?></a>
           </div>
         </div>
 
@@ -121,8 +121,8 @@
               </a>
             </li>
             <li class="nav-item menu-open">
-              <a href="<?= base_url('agama') ?>" class="nav-link">
-                <i class="nav-icon fas fa-coins"></i>
+              <a href="<?= base_url('penghasilan') ?>" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-wave"></i>
                 <p>Penghasilan</p>
               </a>
             </li>
