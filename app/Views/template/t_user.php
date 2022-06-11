@@ -1,3 +1,14 @@
+<?php
+
+$db = db_connect();
+
+$setting = $db->table('tbl_setting')
+  ->where('id', '1')
+  ->get()
+  ->getRowArray();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +32,7 @@
     <nav class="main-header navbar navbar-expand-md navbar-success navbar-dark border-0">
       <div class="container">
         <a href="<?= base_url() ?>" class="navbar-brand">
-          <img src="<?= base_url() ?>/assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8" />
+          <img src="<?= base_url('logo/' . $setting['logo']) ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8" />
         </a>
 
         <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +61,9 @@
               <a href="<?= base_url() ?>" class="nav-link">Pengumuman</a>
             </li>
             <li class="nav-item">
+              <a href="<?= base_url() ?>" class="nav-link">Pendaftaran</a>
+            </li>
+            <li class="nav-item">
               <a href="<?= base_url() ?>" class="nav-link">Contact</a>
             </li>
           </ul>
@@ -59,7 +73,7 @@
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('login') ?>">
-              <b><i class="fa fa-sign-in-alt"></i> Login/Register</b>
+              <b><i class="fa fa-sign-in-alt"></i> Login</b>
             </a>
           </li>
         </ul>
@@ -69,6 +83,16 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+      <div class="content-header">
+        <div class="container">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h4 class="m-0">Tahun Ajaran <?= date('Y') ?>/ <?= date('Y', strtotime('+1 year')) ?></h4>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
 
       <!-- Main content -->
       <div class="content">
@@ -94,7 +118,10 @@
 
     <!-- Main Footer -->
     <footer class="main-footer bg-success border-0 text-center">
-      <strong>Copyright &copy; 2022.</strong>
+      Copyright &copy; <?= date('Y') ?> -
+      <strong>
+        <a class="text-light" href="<?= $setting['web'] ?>"><?= $setting['nama_sekolah'] ?></a>
+      </strong>
     </footer>
   </div>
   <!-- ./wrapper

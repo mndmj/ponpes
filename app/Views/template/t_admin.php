@@ -1,3 +1,14 @@
+<?php
+
+$db = db_connect();
+
+$setting = $db->table('tbl_setting')
+  ->where('id', '1')
+  ->get()
+  ->getRowArray();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +38,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="<?= base_url('assets') ?>/index3.html" class="nav-link">Home</a>
+          <a href="<?= base_url('admin') ?>" class="nav-link">Home</a>
         </li>
       </ul>
 
@@ -65,7 +76,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="<?= base_url('') ?>" class="brand-link">
-        <img src="<?= base_url('assets') ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="<?= base_url('logo/' . $setting['logo']) ?>" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">PPDB-Online</span>
       </a>
 
@@ -213,6 +224,23 @@
             $(this).remove;
           });
         }, 1500);
+    </script>
+
+    <!-- tampil logo setting -->
+    <script>
+      function bacaGambar(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            $('#gambar_load').attr('src', e.target.result)
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+
+      $('#preview_gambar').change(function() {
+        bacaGambar(this);
+      });
     </script>
 </body>
 

@@ -1,6 +1,18 @@
 <?= $this->extend('template/t_admin') ?>
 <?= $this->section('content') ?>
 
+<?php
+
+if (session()->getFlashdata('pesan')) {
+    echo '<div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <h6><i class="icon fas fa-check"></i>';
+    echo session()->getFlashdata('pesan');
+    echo '</h6></div>';
+}
+
+?>
+
 <div class="row">
     <!-- ubah logo -->
     <div class="col-sm-4">
@@ -10,12 +22,13 @@
             </div>
 
             <div class="card-body">
+                <?php echo form_open_multipart('admin/saveSetting') ?>
                 <div class="text-center">
-                    <img class="img-fluid pad" src="<?= base_url('logo/' . $setting['logo']) ?>" width="250px" height="250px">
+                    <img id="gambar_load" class="img-fluid pad" src="<?= base_url('logo/' . $setting['logo']) ?>" width="250px" height="250px">
                 </div>
                 <div class="form-group mt-2">
                     <label>Ganti Logo</label>
-                    <input name="logo" type="file" class="form-control" accept="image/*">
+                    <input id="preview_gambar" name="logo" type="file" class="form-control" accept="image/*">
                 </div>
             </div>
         </div>
@@ -26,7 +39,6 @@
             <div class="card-header">
                 <h3 class="card-title">Data Sekolah</h3>
             </div>
-            <?php echo form_open_multipart('admin/saveSetting') ?>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">

@@ -13,4 +13,11 @@ class ModelAdmin extends Model
             ->get()
             ->getRowArray();
     }
+
+    public function saveSetting($data)
+    {
+        $this->db->table('tbl_setting')
+            ->where('id', '1')
+            ->update($data);
+    }
 }
