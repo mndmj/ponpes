@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jun 2022 pada 08.25
+-- Waktu pembuatan: 11 Jun 2022 pada 20.09
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -97,6 +97,53 @@ INSERT INTO `tbl_pendidikan` (`id_pendidikan`, `pendidikan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tbl_penghasilan`
+--
+
+CREATE TABLE `tbl_penghasilan` (
+  `id_penghasilan` int(2) NOT NULL,
+  `penghasilan` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_penghasilan`
+--
+
+INSERT INTO `tbl_penghasilan` (`id_penghasilan`, `penghasilan`) VALUES
+(1, 'Rp.0 s/d Rp.500.000'),
+(2, 'Rp.500.000 s/d Rp.1.000.000'),
+(3, 'Rp.1.000.000 s/d Rp.1.500.000');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_setting`
+--
+
+CREATE TABLE `tbl_setting` (
+  `id` int(1) NOT NULL,
+  `nama_sekolah` varchar(255) DEFAULT NULL,
+  `alamat` varchar(255) DEFAULT NULL,
+  `kecamatan` varchar(255) DEFAULT NULL,
+  `kabupaten` varchar(255) DEFAULT NULL,
+  `provinsi` varchar(255) DEFAULT NULL,
+  `no_telp` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `web` varchar(255) DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_setting`
+--
+
+INSERT INTO `tbl_setting` (`id`, `nama_sekolah`, `alamat`, `kecamatan`, `kabupaten`, `provinsi`, `no_telp`, `email`, `web`, `deskripsi`, `logo`) VALUES
+(1, 'Pondok Pesantren Al-Iman Muntilan', 'Jl. Talun, Patosan, Sedayu', 'Muntilan', 'Muntilan', 'Jawa Tengah', '0293587367', 'pondokiman@gmail.com', 'https://pesantrenaliman.or.id/', 'Unggul dalam akhlaq, ilmu, prestasi, life skill, dan sosial dakwah                                                                                                                                            ', '1654964124_3632054bfa8040f452cd.png');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tbl_user`
 --
 
@@ -139,6 +186,18 @@ ALTER TABLE `tbl_pendidikan`
   ADD PRIMARY KEY (`id_pendidikan`);
 
 --
+-- Indeks untuk tabel `tbl_penghasilan`
+--
+ALTER TABLE `tbl_penghasilan`
+  ADD PRIMARY KEY (`id_penghasilan`);
+
+--
+-- Indeks untuk tabel `tbl_setting`
+--
+ALTER TABLE `tbl_setting`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -165,6 +224,18 @@ ALTER TABLE `tbl_pekerjaan`
 --
 ALTER TABLE `tbl_pendidikan`
   MODIFY `id_pendidikan` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_penghasilan`
+--
+ALTER TABLE `tbl_penghasilan`
+  MODIFY `id_penghasilan` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_setting`
+--
+ALTER TABLE `tbl_setting`
+  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`
