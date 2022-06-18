@@ -7,6 +7,10 @@ $setting = $db->table('tbl_setting')
   ->get()
   ->getRowArray();
 
+$ta = $db->table('tbl_ta')
+  ->where('status', '1')
+  ->get()
+  ->getRowArray();
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +91,11 @@ $setting = $db->table('tbl_setting')
         <div class="container">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h4 class="m-0">Tahun Ajaran <?= date('Y') ?>/ <?= date('Y', strtotime('+1 year')) ?></h4>
+              <?php if (isset($ta['status']) <> 1) { ?>
+                <h4 class="mb-0 text-danger text-bold">Pendaftaran Belum dibuka !!</h4>
+              <?php } else { ?>
+                <h4 class="m-0">Pendaftaran Tahun Ajaran <?= $ta['ta'] ?></h4>
+              <?php } ?>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -117,7 +125,7 @@ $setting = $db->table('tbl_setting')
     <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
-    <footer class="main-footer bg-success border-0 text-center">
+    <footer class="main-footer bg-success border-0 text-center mt-3">
       Copyright &copy; <?= date('Y') ?> -
       <strong>
         <a class="text-light" href="<?= $setting['web'] ?>"><?= $setting['nama_sekolah'] ?></a>

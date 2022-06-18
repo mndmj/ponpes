@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Jun 2022 pada 20.09
+-- Waktu pembuatan: 18 Jun 2022 pada 22.10
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -144,6 +144,27 @@ INSERT INTO `tbl_setting` (`id`, `nama_sekolah`, `alamat`, `kecamatan`, `kabupat
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tbl_ta`
+--
+
+CREATE TABLE `tbl_ta` (
+  `id_ta` int(11) NOT NULL,
+  `tahun` year(4) DEFAULT NULL,
+  `ta` varchar(25) DEFAULT NULL,
+  `status` int(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_ta`
+--
+
+INSERT INTO `tbl_ta` (`id_ta`, `tahun`, `ta`, `status`) VALUES
+(1, 2021, '2021/2022', 0),
+(2, 2022, '2022/2023', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tbl_user`
 --
 
@@ -198,6 +219,12 @@ ALTER TABLE `tbl_setting`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `tbl_ta`
+--
+ALTER TABLE `tbl_ta`
+  ADD PRIMARY KEY (`id_ta`);
+
+--
 -- Indeks untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -236,6 +263,12 @@ ALTER TABLE `tbl_penghasilan`
 --
 ALTER TABLE `tbl_setting`
   MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_ta`
+--
+ALTER TABLE `tbl_ta`
+  MODIFY `id_ta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`

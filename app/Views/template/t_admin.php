@@ -114,6 +114,12 @@ $setting = $db->table('tbl_setting')
               </a>
             </li>
             <li class="nav-item menu-open">
+              <a href="<?= base_url('ta') ?>" class="nav-link">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                <p>Tahun Ajaran</p>
+              </a>
+            </li>
+            <li class="nav-item menu-open">
               <a href="<?= base_url('pekerjaan') ?>" class="nav-link">
                 <i class="nav-icon fas fa-briefcase"></i>
                 <p>Pekerjaan</p>
