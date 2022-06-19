@@ -82,7 +82,7 @@
       <!-- /.col -->
 
       <div class="col">
-        <a href="<?= base_url() ?>" class="btn btn-info btn-flat btn-block">Mendaftar</a>
+        <a href="<?= base_url('ppdb/pendaftaran') ?>" class="btn btn-info btn-flat btn-block">Mendaftar</a>
       </div>
     </div>
   </div>

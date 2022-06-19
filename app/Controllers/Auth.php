@@ -13,11 +13,6 @@ class Auth extends BaseController
         helper('form');
     }
 
-    public function index()
-    {
-        //
-    }
-
     public function login()
     {
         return view('view_login_user');

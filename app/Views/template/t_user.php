@@ -65,7 +65,7 @@ $ta = $db->table('tbl_ta')
               <a href="<?= base_url() ?>" class="nav-link">Pengumuman</a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url() ?>" class="nav-link">Pendaftaran</a>
+              <a href="<?= base_url('ppdb/pendaftaran') ?>" class="nav-link">Pendaftaran</a>
             </li>
             <li class="nav-item">
               <a href="<?= base_url() ?>" class="nav-link">Contact</a>

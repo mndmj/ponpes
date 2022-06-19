@@ -38,7 +38,8 @@ class Filters extends BaseConfig
                 'except' => [
                     'auth', 'auth/*',
                     'home', 'home/*',
-                    '/'
+                    '/',
+                    'ppdb', 'ppdb/*',
                 ]
             ]
         ],
@@ -54,6 +55,7 @@ class Filters extends BaseConfig
                     'user', 'user/*',
                     'penghasilan', 'penghasilan/*',
                     'ta', 'ta/*',
+                    'jurusan', 'jurusan/*',
                 ]
             ],
             'toolbar',
