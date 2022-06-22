@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jun 2022 pada 22.10
+-- Waktu pembuatan: 22 Jun 2022 pada 22.43
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -43,6 +43,26 @@ INSERT INTO `tbl_agama` (`id_agama`, `agama`) VALUES
 (5, 'Khatolik'),
 (6, 'Budha'),
 (7, 'Konghucu');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_jurusan`
+--
+
+CREATE TABLE `tbl_jurusan` (
+  `id_jurusan` int(2) NOT NULL,
+  `jurusan` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_jurusan`
+--
+
+INSERT INTO `tbl_jurusan` (`id_jurusan`, `jurusan`) VALUES
+(1, 'Tidak Ada'),
+(2, 'MTs IPA'),
+(3, 'MTs IPS');
 
 -- --------------------------------------------------------
 
@@ -144,6 +164,28 @@ INSERT INTO `tbl_setting` (`id`, `nama_sekolah`, `alamat`, `kecamatan`, `kabupat
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tbl_siswa`
+--
+
+CREATE TABLE `tbl_siswa` (
+  `id_siswa` int(11) NOT NULL,
+  `nisn` varchar(10) DEFAULT NULL,
+  `nama_lengkap` varchar(255) DEFAULT NULL,
+  `tempat_lahir` varchar(255) DEFAULT NULL,
+  `tgl_lahir` date DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_siswa`
+--
+
+INSERT INTO `tbl_siswa` (`id_siswa`, `nisn`, `nama_lengkap`, `tempat_lahir`, `tgl_lahir`, `password`) VALUES
+(1, '1234567890', 'Muhammad Nasrullah', 'Makassar', '2000-01-01', '012000');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tbl_ta`
 --
 
@@ -195,6 +237,12 @@ ALTER TABLE `tbl_agama`
   ADD PRIMARY KEY (`id_agama`);
 
 --
+-- Indeks untuk tabel `tbl_jurusan`
+--
+ALTER TABLE `tbl_jurusan`
+  ADD PRIMARY KEY (`id_jurusan`);
+
+--
 -- Indeks untuk tabel `tbl_pekerjaan`
 --
 ALTER TABLE `tbl_pekerjaan`
@@ -219,6 +267,12 @@ ALTER TABLE `tbl_setting`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `tbl_siswa`
+--
+ALTER TABLE `tbl_siswa`
+  ADD PRIMARY KEY (`id_siswa`);
+
+--
 -- Indeks untuk tabel `tbl_ta`
 --
 ALTER TABLE `tbl_ta`
@@ -239,6 +293,12 @@ ALTER TABLE `tbl_user`
 --
 ALTER TABLE `tbl_agama`
   MODIFY `id_agama` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_jurusan`
+--
+ALTER TABLE `tbl_jurusan`
+  MODIFY `id_jurusan` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_pekerjaan`
@@ -263,6 +323,12 @@ ALTER TABLE `tbl_penghasilan`
 --
 ALTER TABLE `tbl_setting`
   MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_siswa`
+--
+ALTER TABLE `tbl_siswa`
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_ta`

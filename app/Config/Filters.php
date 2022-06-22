@@ -48,6 +48,7 @@ class Filters extends BaseConfig
                 'except' => [
                     'home', 'home/*',
                     '/',
+                    'ppdb', 'ppdb/*',
                     'admin', 'admin/*',
                     'pekerjaan', 'pekerjaan/*',
                     'pendidikan', 'pendidikan/*',

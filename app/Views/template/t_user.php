@@ -92,7 +92,7 @@ $ta = $db->table('tbl_ta')
           <div class="row mb-2">
             <div class="col-sm-6">
               <?php if (isset($ta['status']) <> 1) { ?>
-                <h4 class="mb-0 text-danger text-bold">Pendaftaran Belum dibuka !!</h4>
+                <h4 class="mb-0 text-danger text-bold">Pendaftaran Belum dibuka kembali !!</h4>
               <?php } else { ?>
                 <h4 class="m-0">Pendaftaran Tahun Ajaran <?= $ta['ta'] ?></h4>
               <?php } ?>
@@ -142,6 +142,15 @@ $ta = $db->table('tbl_ta')
   <script src="<?= base_url() ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="<?= base_url() ?>/assets/dist/js/adminlte.min.js"></script>
+
+  <script>
+    window.setTimeout(
+      function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+          $(this).remove;
+        });
+      }, 1500);
+  </script>
 </body>
 
 </html>
