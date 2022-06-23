@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Jun 2022 pada 22.43
+-- Waktu pembuatan: 23 Jun 2022 pada 22.34
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -171,6 +171,7 @@ CREATE TABLE `tbl_siswa` (
   `id_siswa` int(11) NOT NULL,
   `nisn` varchar(10) DEFAULT NULL,
   `nama_lengkap` varchar(255) DEFAULT NULL,
+  `jk` varchar(1) DEFAULT NULL,
   `tempat_lahir` varchar(255) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL
@@ -180,8 +181,9 @@ CREATE TABLE `tbl_siswa` (
 -- Dumping data untuk tabel `tbl_siswa`
 --
 
-INSERT INTO `tbl_siswa` (`id_siswa`, `nisn`, `nama_lengkap`, `tempat_lahir`, `tgl_lahir`, `password`) VALUES
-(1, '1234567890', 'Muhammad Nasrullah', 'Makassar', '2000-01-01', '012000');
+INSERT INTO `tbl_siswa` (`id_siswa`, `nisn`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `password`) VALUES
+(1, '1234567890', 'Muhammad Nasrullah Darto Marrung Jaya', 'L', 'Makassar', '2002-03-25', '032002'),
+(3, '1234567891', 'Adella Nawang A', 'P', 'Klaten', '2001-10-20', '102001');
 
 -- --------------------------------------------------------
 
@@ -328,7 +330,7 @@ ALTER TABLE `tbl_setting`
 -- AUTO_INCREMENT untuk tabel `tbl_siswa`
 --
 ALTER TABLE `tbl_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_ta`

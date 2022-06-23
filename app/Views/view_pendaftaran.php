@@ -6,7 +6,7 @@
         <img src="<?= base_url('foto/register.png') ?>" class="img-fluid pad">
     </div>
     <div class="col-sm-7">
-        <?= form_open('ppdb/simpanPendaftaran') ?>
+        <?= form_open('pendaftaran/simpanPendaftaran') ?>
         <div class="card card-outline card-info">
             <div class="card-header">
                 <h3 class="card-title">Pendaftaran</h3>
@@ -16,7 +16,7 @@
                 <?php session()->getFlashdata('errors');
 
                 if (session()->getFlashdata('pesan')) {
-                    echo '<div class="alert alert-success alert-dismissible">
+                    echo '<div class="alert alert-success alert-dismissible alertt">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <h6><i class="icon fas fa-check"></i>';
                     echo session()->getFlashdata('pesan');
@@ -28,48 +28,46 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label>NISN</label>
-                            <input name="nisn" value="<?= old('nisn') ?>" class="form-control" placeholder="NISN">
                             <small class="text-danger">
                                 <b><?= $validation->hasError('nisn') ? $validation->getError('nisn') : '' ?></b>
                             </small>
+                            <input name="nisn" value="<?= old('nisn') ?>" class="form-control" placeholder="NISN">
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label>Nama Lengkap</label>
-                            <input name="nama_lengkap" value="<?= old('nama_lengkap') ?>" class="form-control" placeholder="Nama Lengkap">
                             <small class="text-danger">
                                 <b><?= $validation->hasError('nama_lengkap') ? $validation->getError('nama_lengkap') : '' ?></b>
                             </small>
-                        </div>
-                    </div>
-                    <!-- <div class="col-sm-12">
-                        <div class="form-group">
-                            <label>Jenis Kelamin</label>
-                            <div class="row px-3">
-                                <div class="col-4">
-                                    <input name="jenis_kelamin" id="laki" type="radio">
-                                    <label for="laki">Laki-laki</label>
-                                </div>
-                                <div class="col-8">
-                                    <input name="jenis_kelamin" id="perempuan" type="radio">
-                                    <label for="perempuan">Perempuan</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label>Tempat Lahir</label>
-                            <input name="tempat_lahir" value="<?= old('tempat_lahir') ?>" class="form-control" placeholder="Tempat Lahir">
-                            <small class="text-danger">
-                                <b><?= $validation->hasError('tempat_lahir') ? $validation->getError('tempat_lahir') : '' ?></b>
-                            </small>
+                            <input name="nama_lengkap" value="<?= old('nama_lengkap') ?>" class="form-control" placeholder="Nama Lengkap">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Tanggal Lahir</label>
+                            <label>Jenis Kelamin</label>
+                            <small class="text-danger">
+                                <b><?= $validation->hasError('jk') ? $validation->getError('jk') : '' ?></b>
+                            </small>
+                            <select name="jk" class="form-control">
+                                <option value="">--Pilih Jenis Kelamin--</option>
+                                <option value="L">Laki-laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label>Tempat Lahir</label>
+                            <small class="text-danger">
+                                <b><?= $validation->hasError('tempat_lahir') ? $validation->getError('tempat_lahir') : '' ?></b>
+                            </small>
+                            <input name="tempat_lahir" value="<?= old('tempat_lahir') ?>" class="form-control" placeholder="Tempat Lahir">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Tanggal Lahir <b class="text-danger"><?= $validation->hasError('tanggal') ? $validation->getError('tanggal') : '' ?></b></label>
                             <select name="tanggal" class="form-control">
                                 <option value="">--Tanggal--</option>
                                 <?php
@@ -80,14 +78,11 @@
                                     </option>
                                 <?php } ?>
                             </select>
-                            <p class="text-danger">
-                                <b><?= $validation->hasError('tanggal') ? $validation->getError('tanggal') : '' ?></b>
-                            </p>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Bulan</label>
+                            <label>Bulan <b class="text-danger"><?= $validation->hasError('bulan') ? $validation->getError('bulan') : '' ?></b></label>
                             <select name="bulan" class="form-control">
                                 <option value="">--Bulan--</option>
                                 <option value="1">Januari</option>
@@ -103,14 +98,11 @@
                                 <option value="11">November</option>
                                 <option value="12">Desember</option>
                             </select>
-                            <p class="text-danger">
-                                <b><?= $validation->hasError('bulan') ? $validation->getError('bulan') : '' ?></b>
-                            </p>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Tahun</label>
+                            <label>Tahun <b class="text-danger"><?= $validation->hasError('tahun') ? $validation->getError('tahun') : '' ?></b></label>
                             <select name="tahun" class="form-control">
                                 <option value="">--Tahun--</option>
                                 <?php
@@ -122,12 +114,11 @@
                                     </option>
                                 <?php } ?>
                             </select>
-                            <p class="text-danger">
-                                <b><?= $validation->hasError('tahun') ? $validation->getError('tahun') : '' ?></b>
-                            </p>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>

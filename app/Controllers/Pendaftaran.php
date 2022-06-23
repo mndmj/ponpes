@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\ModelTa;
 use App\Models\ModelSiswa;
 
-class Ppdb extends BaseController
+class Pendaftaran extends BaseController
 {
     public function __construct()
     {
@@ -15,7 +15,7 @@ class Ppdb extends BaseController
         $this->ModelSiswa = new ModelSiswa();
     }
 
-    public function pendaftaran()
+    public function index()
     {
         $data = [
             'title' => 'PPDB',
@@ -43,6 +43,13 @@ class Ppdb extends BaseController
                 'rules'  => 'required',
                 'errors' => [
                     'required' => '*{field} Wajib Diisi !!',
+                ],
+            ],
+            'jk' => [
+                'label' => 'Jenis Kelamin',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '* Wajib Diisi !!',
                 ],
             ],
             'tempat_lahir' => [
@@ -79,17 +86,18 @@ class Ppdb extends BaseController
             $data = [
                 'nisn' => $this->request->getPost('nisn'),
                 'nama_lengkap' => $this->request->getPost('nama_lengkap'),
+                'jk' => $this->request->getPost('jk'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $tahun . '-' . $bulan . '-' . $tanggal,
                 'password' => $pw . $tahun,
             ];
             $this->ModelSiswa->insert($data);
             session()->setFlashdata('pesan', 'Berhasil mendaftar, silahkan login untuk melengkapi data!!');
-            return redirect()->to('/ppdb/pendaftaran');
+            return redirect()->to('/pendaftaran');
         } else {
             //jika ada validasi 
             $validation = \Config\Services::validation();
-            return redirect()->to('/ppdb/pendaftaran')->withInput()->with('validation', $validation);
+            return redirect()->to('/pendaftaran')->withInput()->with('validation', $validation);
         }
     }
 }

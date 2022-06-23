@@ -24,6 +24,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'filteruser'    => \App\Filters\FilterUser::class,
+        'filtersiswa'    => \App\Filters\FilterSiswa::class,
     ];
 
     /**
@@ -40,6 +41,16 @@ class Filters extends BaseConfig
                     'home', 'home/*',
                     '/',
                     'ppdb', 'ppdb/*',
+                    'pendaftaran', 'pendaftaran/*',
+                ]
+            ],
+            'filtersiswa' => [
+                'except' => [
+                    'auth', 'auth/*',
+                    'home', 'home/*',
+                    '/',
+                    'ppdb', 'ppdb/*',
+                    'pendaftaran', 'pendaftaran/*',
                 ]
             ]
         ],
@@ -49,6 +60,7 @@ class Filters extends BaseConfig
                     'home', 'home/*',
                     '/',
                     'ppdb', 'ppdb/*',
+                    'pendaftaran', 'pendaftaran/*',
                     'admin', 'admin/*',
                     'pekerjaan', 'pekerjaan/*',
                     'pendidikan', 'pendidikan/*',
@@ -57,6 +69,15 @@ class Filters extends BaseConfig
                     'penghasilan', 'penghasilan/*',
                     'ta', 'ta/*',
                     'jurusan', 'jurusan/*',
+                ]
+            ],
+            'filtersiswa' => [
+                'except' => [
+                    'home', 'home/*',
+                    '/',
+                    'ppdb', 'ppdb/*',
+                    'siswa', 'siswa/*',
+                    'pendaftaran', 'pendaftaran/*',
                 ]
             ],
             'toolbar',

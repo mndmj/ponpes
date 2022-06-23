@@ -16,4 +16,14 @@ class ModelAuth extends Model
             ]
         )->get()->getRowArray();
     }
+
+    public function login_siswa($nisn, $password)
+    {
+        return $this->db->table('tbl_siswa')->where(
+            [
+                'nisn' => $nisn,
+                'password' => $password
+            ]
+        )->get()->getRowArray();
+    }
 }

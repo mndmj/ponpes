@@ -65,7 +65,7 @@ $ta = $db->table('tbl_ta')
               <a href="<?= base_url() ?>" class="nav-link">Pengumuman</a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url('ppdb/pendaftaran') ?>" class="nav-link">Pendaftaran</a>
+              <a href="<?= base_url('/pendaftaran') ?>" class="nav-link">Pendaftaran</a>
             </li>
             <li class="nav-item">
               <a href="<?= base_url() ?>" class="nav-link">Contact</a>
@@ -76,10 +76,23 @@ $ta = $db->table('tbl_ta')
         <!-- Right navbar links -->
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('login') ?>">
-              <b><i class="fa fa-sign-in-alt"></i> Login</b>
+            <?php if (session()->get('nisn') == '') { ?>
+              <a class="nav-link" href="<?= base_url('auth/loginSiswa') ?>">
+                <b><i class="fa fa-sign-in-alt"></i> Login</b>
+              </a>
+            <?php } else { ?>
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+              <i class="fas fa-user"></i>&ensp;<?= session()->get('nama_lengkap') ?>
             </a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="<?= base_url('biodata') ?>" class="dropdown-item"><i class="fas fa-address-card"></i>&ensp;Biodata</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a href="<?= base_url('auth/logout_siswa') ?>" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>&ensp;Logout</a></li>
+            </ul>
           </li>
+        <?php } ?>
+        </li>
         </ul>
       </div>
     </nav>
@@ -107,7 +120,7 @@ $ta = $db->table('tbl_ta')
         <div class="container">
           <div class="row">
 
-            <!-- INI JUMBOTRON -->
+            <!-- INI panggil template -->
             <?= $this->renderSection('content') ?>
 
           </div>
@@ -146,7 +159,7 @@ $ta = $db->table('tbl_ta')
   <script>
     window.setTimeout(
       function() {
-        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+        $(".alertt").fadeTo(500, 0).slideUp(500, function() {
           $(this).remove;
         });
       }, 1500);

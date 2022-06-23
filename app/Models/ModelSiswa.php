@@ -13,5 +13,5 @@ class ModelSiswa extends Model
 
     protected $returnType     = 'array';
 
-    protected $allowedFields = ['id_siswa', 'nisn', 'nama_lengkap', 'tempat_lahir', 'tgl_lahir', 'password'];
+    protected $allowedFields = ['id_siswa', 'nisn', 'nama_lengkap', 'jk', 'tempat_lahir', 'tgl_lahir', 'password'];
 }
