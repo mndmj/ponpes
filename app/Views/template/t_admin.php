@@ -107,59 +107,76 @@ $setting = $db->table('tbl_setting')
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="<?= base_url('admin') ?>" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>Dashboard</p>
               </a>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="<?= base_url('ta') ?>" class="nav-link">
                 <i class="nav-icon fas fa-calendar-alt"></i>
                 <p>Tahun Ajaran</p>
               </a>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="<?= base_url('jurusan') ?>" class="nav-link">
                 <i class="nav-icon fas fa-people-carry"></i>
                 <p>Jurusan</p>
               </a>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="<?= base_url('pekerjaan') ?>" class="nav-link">
                 <i class="nav-icon fas fa-briefcase"></i>
                 <p>Pekerjaan</p>
               </a>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="<?= base_url('pendidikan') ?>" class="nav-link">
                 <i class="nav-icon fas fa-graduation-cap"></i>
                 <p>Pendidikan</p>
               </a>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="<?= base_url('agama') ?>" class="nav-link">
                 <i class="nav-icon fas fa-mosque  "></i>
                 <p>Agama</p>
               </a>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="<?= base_url('penghasilan') ?>" class="nav-link">
                 <i class="nav-icon fas fa-money-bill-wave"></i>
                 <p>Penghasilan</p>
               </a>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="<?= base_url('user') ?>" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>User</p>
               </a>
             </li>
-            <li class="nav-item menu-open">
-              <a href="<?= base_url('admin/setting') ?>" class="nav-link">
-                <i class="nav-icon fas fa-cog"></i>
-                <p>Setting</p>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-cogs"></i>
+                <p>
+                  Set-up
+                  <i class="right fas fa-angle-left"></i>
+                </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?= base_url('admin/setting') ?>" class="nav-link">
+                    <i class="fas fa-cog nav-icon"></i>
+                    <p>Setting Web</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('bbaner') ?>" class="nav-link">
+                    <i class="far fa-image nav-icon"></i>
+                    <p>Setting Banner</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>

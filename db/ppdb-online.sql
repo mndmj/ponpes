@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jun 2022 pada 22.34
+-- Waktu pembuatan: 24 Jun 2022 pada 20.02
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -43,6 +43,28 @@ INSERT INTO `tbl_agama` (`id_agama`, `agama`) VALUES
 (5, 'Khatolik'),
 (6, 'Budha'),
 (7, 'Konghucu');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_baner`
+--
+
+CREATE TABLE `tbl_baner` (
+  `id_baner` int(11) NOT NULL,
+  `ket` varchar(255) DEFAULT NULL,
+  `baner` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_baner`
+--
+
+INSERT INTO `tbl_baner` (`id_baner`, `ket`, `baner`) VALUES
+(1, 'Baner 1', 'baner1.jpg'),
+(2, 'Baner 2', 'baner2.jpg'),
+(3, 'Baner 3', 'baner3.jpg'),
+(4, 'Baner 4', 'baner4.jpg');
 
 -- --------------------------------------------------------
 
@@ -169,6 +191,8 @@ INSERT INTO `tbl_setting` (`id`, `nama_sekolah`, `alamat`, `kecamatan`, `kabupat
 
 CREATE TABLE `tbl_siswa` (
   `id_siswa` int(11) NOT NULL,
+  `no_pendaftaran` varchar(12) DEFAULT NULL,
+  `tgl_pendaftaran` date DEFAULT NULL,
   `nisn` varchar(10) DEFAULT NULL,
   `nama_lengkap` varchar(255) DEFAULT NULL,
   `jk` varchar(1) DEFAULT NULL,
@@ -181,9 +205,9 @@ CREATE TABLE `tbl_siswa` (
 -- Dumping data untuk tabel `tbl_siswa`
 --
 
-INSERT INTO `tbl_siswa` (`id_siswa`, `nisn`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `password`) VALUES
-(1, '1234567890', 'Muhammad Nasrullah Darto Marrung Jaya', 'L', 'Makassar', '2002-03-25', '032002'),
-(3, '1234567891', 'Adella Nawang A', 'P', 'Klaten', '2001-10-20', '102001');
+INSERT INTO `tbl_siswa` (`id_siswa`, `no_pendaftaran`, `tgl_pendaftaran`, `nisn`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `password`) VALUES
+(1, '202206230001', '2022-06-23', '1234567890', 'Muhammad Nasrullah', 'L', 'Makassar', '2002-03-25', '032002'),
+(3, '202206240001', '2022-06-24', '1234567891', 'Adella Nawang', 'P', 'Klaten', '2006-09-17', '092006');
 
 -- --------------------------------------------------------
 
@@ -237,6 +261,12 @@ INSERT INTO `tbl_user` (`id_user`, `nama_user`, `email`, `password`, `foto`) VAL
 --
 ALTER TABLE `tbl_agama`
   ADD PRIMARY KEY (`id_agama`);
+
+--
+-- Indeks untuk tabel `tbl_baner`
+--
+ALTER TABLE `tbl_baner`
+  ADD PRIMARY KEY (`id_baner`);
 
 --
 -- Indeks untuk tabel `tbl_jurusan`
@@ -295,6 +325,12 @@ ALTER TABLE `tbl_user`
 --
 ALTER TABLE `tbl_agama`
   MODIFY `id_agama` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_baner`
+--
+ALTER TABLE `tbl_baner`
+  MODIFY `id_baner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_jurusan`

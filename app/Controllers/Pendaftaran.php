@@ -82,8 +82,11 @@ class Pendaftaran extends BaseController
             $tahun = $this->request->getPost('tahun');
             $bulan = $this->request->getPost('bulan');
             $tanggal = $this->request->getPost('tanggal');
+            $no_pendaftaran = $this->ModelSiswa->noPendaftaran();
             $pw = sprintf("%02d", $bulan);
             $data = [
+                'no_pendaftaran' => $no_pendaftaran,
+                'tgl_pendaftaran' => date('Y-m-d'),
                 'nisn' => $this->request->getPost('nisn'),
                 'nama_lengkap' => $this->request->getPost('nama_lengkap'),
                 'jk' => $this->request->getPost('jk'),
