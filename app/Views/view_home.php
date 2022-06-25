@@ -15,7 +15,7 @@
         $no++;
       ?>
         <div class="carousel-item <?= ($no == 1) ? 'active' : '' ?>">
-          <img class="d-block w-100" src="<?= base_url('baner/' . $value['baner']) ?>">
+          <img class="d-block w-100" src="<?= base_url('foto_baner/' . $value['baner']) ?>">
         </div>
       <?php } ?>
     </div>
@@ -35,7 +35,7 @@
 </div>
 
 <div class="col-sm-4">
-  <div class="card card-outline card-success">
+  <div class="card card-lightblue">
     <div class="card-header">
       <h3 class="card-title">Estimasi Pendaftaran</h3>
     </div>

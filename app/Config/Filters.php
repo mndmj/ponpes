@@ -69,7 +69,7 @@ class Filters extends BaseConfig
                     'penghasilan', 'penghasilan/*',
                     'ta', 'ta/*',
                     'jurusan', 'jurusan/*',
-                    'bbaner', 'bbaner/*',
+                    'baner', 'baner/*',
                 ]
             ],
             'filtersiswa' => [

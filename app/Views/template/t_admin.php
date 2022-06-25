@@ -171,7 +171,7 @@ $setting = $db->table('tbl_setting')
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?= base_url('bbaner') ?>" class="nav-link">
+                  <a href="<?= base_url('/Baner') ?>" class="nav-link">
                     <i class="far fa-image nav-icon"></i>
                     <p>Setting Banner</p>
                   </a>
