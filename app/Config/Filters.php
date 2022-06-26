@@ -70,6 +70,7 @@ class Filters extends BaseConfig
                     'ta', 'ta/*',
                     'jurusan', 'jurusan/*',
                     'baner', 'baner/*',
+                    'jalurmasuk', 'jalurmasuk/*',
                 ]
             ],
             'filtersiswa' => [

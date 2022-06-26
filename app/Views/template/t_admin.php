@@ -114,47 +114,54 @@ $setting = $db->table('tbl_setting')
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url('ta') ?>" class="nav-link">
-                <i class="nav-icon fas fa-calendar-alt"></i>
-                <p>Tahun Ajaran</p>
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-folder"></i>
+                <p>
+                  Master Data
+                  <i class="right fas fa-angle-left"></i>
+                </p>
               </a>
+              <ul class="nav nav-treeview rounded bg-secondary">
+                <li class="nav-item">
+                  <a href="<?= base_url('jurusan') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-people-carry"></i>
+                    <p>Jurusan</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('pekerjaan') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-briefcase"></i>
+                    <p>Pekerjaan</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('pendidikan') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-graduation-cap"></i>
+                    <p>Pendidikan</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('agama') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-mosque  "></i>
+                    <p>Agama</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('penghasilan') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-money-bill-wave"></i>
+                    <p>Penghasilan</p>
+                  </a>
+                </li>
+              </ul>
             </li>
-            <li class="nav-item">
-              <a href="<?= base_url('jurusan') ?>" class="nav-link">
-                <i class="nav-icon fas fa-people-carry"></i>
-                <p>Jurusan</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= base_url('pekerjaan') ?>" class="nav-link">
-                <i class="nav-icon fas fa-briefcase"></i>
-                <p>Pekerjaan</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= base_url('pendidikan') ?>" class="nav-link">
-                <i class="nav-icon fas fa-graduation-cap"></i>
-                <p>Pendidikan</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= base_url('agama') ?>" class="nav-link">
-                <i class="nav-icon fas fa-mosque  "></i>
-                <p>Agama</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= base_url('penghasilan') ?>" class="nav-link">
-                <i class="nav-icon fas fa-money-bill-wave"></i>
-                <p>Penghasilan</p>
-              </a>
-            </li>
+
             <li class="nav-item">
               <a href="<?= base_url('user') ?>" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>User</p>
               </a>
             </li>
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-cogs"></i>
@@ -163,7 +170,19 @@ $setting = $db->table('tbl_setting')
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
+              <ul class="nav nav-treeview rounded bg-secondary">
+                <li class="nav-item">
+                  <a href="<?= base_url('ta') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-calendar-alt"></i>
+                    <p>Tahun Ajaran</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('jalurmasuk') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-sitemap"></i>
+                    <p>Jalur Masuk</p>
+                  </a>
+                </li>
                 <li class="nav-item">
                   <a href="<?= base_url('admin/setting') ?>" class="nav-link">
                     <i class="fas fa-cog nav-icon"></i>

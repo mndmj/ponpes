@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Jun 2022 pada 20.02
+-- Waktu pembuatan: 26 Jun 2022 pada 14.26
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -63,8 +63,29 @@ CREATE TABLE `tbl_baner` (
 INSERT INTO `tbl_baner` (`id_baner`, `ket`, `baner`) VALUES
 (1, 'Baner 1', 'baner1.jpg'),
 (2, 'Baner 2', 'baner2.jpg'),
-(3, 'Baner 3', 'baner3.jpg'),
-(4, 'Baner 4', 'baner4.jpg');
+(3, 'Baner 3', '1656153601_096ccd0c6c3fcffb168a.jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_jalur_masuk`
+--
+
+CREATE TABLE `tbl_jalur_masuk` (
+  `id_jalur_masuk` int(2) NOT NULL,
+  `jalur_masuk` varchar(255) DEFAULT NULL,
+  `kuota` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_jalur_masuk`
+--
+
+INSERT INTO `tbl_jalur_masuk` (`id_jalur_masuk`, `jalur_masuk`, `kuota`) VALUES
+(1, 'Zonasi', 100),
+(2, 'Prestasi', 25),
+(5, 'Afirmasi', 40),
+(6, 'Perpindahan', 10);
 
 -- --------------------------------------------------------
 
@@ -269,6 +290,12 @@ ALTER TABLE `tbl_baner`
   ADD PRIMARY KEY (`id_baner`);
 
 --
+-- Indeks untuk tabel `tbl_jalur_masuk`
+--
+ALTER TABLE `tbl_jalur_masuk`
+  ADD PRIMARY KEY (`id_jalur_masuk`);
+
+--
 -- Indeks untuk tabel `tbl_jurusan`
 --
 ALTER TABLE `tbl_jurusan`
@@ -330,7 +357,13 @@ ALTER TABLE `tbl_agama`
 -- AUTO_INCREMENT untuk tabel `tbl_baner`
 --
 ALTER TABLE `tbl_baner`
-  MODIFY `id_baner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_baner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_jalur_masuk`
+--
+ALTER TABLE `tbl_jalur_masuk`
+  MODIFY `id_jalur_masuk` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_jurusan`
