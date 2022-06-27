@@ -74,4 +74,24 @@ class Admin extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil diubah !!!');
         return redirect()->to('/admin/setting');
     }
+
+    public function beranda()
+    {
+        $data = [
+            'title' => 'PPDB',
+            'subtitle' => 'Setting Beranda',
+            'beranda' => $this->ModelAdmin->detailSetting(),
+        ];
+        return view('admin/view_beranda', $data);
+    }
+
+    public function saveBeranda()
+    {
+        $data = [
+            'beranda' => $this->request->getPost('beranda'),
+        ];
+        $this->ModelAdmin->saveSetting($data);
+        session()->setFlashdata('pesan', 'Data berhasil diubah !!!');
+        return redirect()->to('/admin/beranda');
+    }
 }

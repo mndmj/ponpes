@@ -62,13 +62,16 @@ $ta = $db->table('tbl_ta')
               <a href="<?= base_url('') ?>" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url() ?>" class="nav-link">Pengumuman</a>
-            </li>
-            <li class="nav-item">
               <a href="<?= base_url('/pendaftaran') ?>" class="nav-link">Pendaftaran</a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url() ?>" class="nav-link">Contact</a>
+              <a href="<?= base_url() ?>" class="nav-link">Petunjuk</a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= base_url() ?>" class="nav-link">Pengumuman</a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= base_url() ?>" class="nav-link">About</a>
             </li>
           </ul>
         </div>

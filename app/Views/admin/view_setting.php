@@ -93,7 +93,7 @@ if (session()->getFlashdata('pesan')) {
 
             <div class="card-body pb-0">
                 <div class="form-group">
-                    <textarea name="deskripsi" rows="5" class="form-control">
+                    <textarea name="deskripsi" id="summernote" class="form-control">
                     <?= $setting['deskripsi'] ?>
                     </textarea>
                 </div>

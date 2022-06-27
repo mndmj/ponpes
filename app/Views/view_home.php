@@ -86,5 +86,17 @@
       </div>
     </div>
   </div>
+</div>
 
-  <?= $this->endSection() ?>
+<div class="col-sm-12">
+  <div class="card card-outline card-success">
+    <div class="card-header">
+      <h3 class="card-title">Beranda</h3>
+    </div>
+    <div class="card-body mx-lg-5 px-5">
+      <?= $beranda['beranda'] ?>
+    </div>
+  </div>
+</div>
+
+<?= $this->endSection() ?>

@@ -23,7 +23,8 @@ $setting = $db->table('tbl_setting')
   <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() ?>/assets/dist/css/adminlte.min.css">
-  <!-- Gambar Title -->
+  <!-- Summernote -->
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/summernote/summernote-bs4.min.css">
 
 </head>
 
@@ -190,9 +191,15 @@ $setting = $db->table('tbl_setting')
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?= base_url('/Baner') ?>" class="nav-link">
+                  <a href="<?= base_url('baner') ?>" class="nav-link">
                     <i class="far fa-image nav-icon"></i>
                     <p>Setting Banner</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('admin/beranda') ?>" class="nav-link">
+                    <i class="fa fa-warehouse nav-icon"></i>
+                    <p>Setting Beranda</p>
                   </a>
                 </li>
               </ul>
@@ -264,6 +271,15 @@ $setting = $db->table('tbl_setting')
     <script src="<?= base_url('assets') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url('assets') ?>/dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="<?= base_url('assets') ?>/plugins/summernote/summernote-bs4.min.js"></script>
+
+    <script>
+      $(function() {
+        // Summernote
+        $('#summernote').summernote()
+      });
+    </script>
 
     <script>
       window.setTimeout(
