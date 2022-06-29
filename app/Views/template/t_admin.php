@@ -130,6 +130,12 @@ $setting = $db->table('tbl_setting')
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a href="<?= base_url('lampiran') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-file-archive"></i>
+                    <p>Lampiran</p>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a href="<?= base_url('pekerjaan') ?>" class="nav-link">
                     <i class="nav-icon fas fa-briefcase"></i>
                     <p>Pekerjaan</p>

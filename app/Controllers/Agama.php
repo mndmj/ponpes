@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\ModelAgama;
 use CodeIgniter\HTTP\Request;
 
-class agama extends BaseController
+class Agama extends BaseController
 {
     public function __construct()
     {
