@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Jun 2022 pada 14.26
+-- Waktu pembuatan: 29 Jun 2022 pada 19.25
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -62,7 +62,7 @@ CREATE TABLE `tbl_baner` (
 
 INSERT INTO `tbl_baner` (`id_baner`, `ket`, `baner`) VALUES
 (1, 'Baner 1', 'baner1.jpg'),
-(2, 'Baner 2', 'baner2.jpg'),
+(2, 'Baner 2', '1656342681_81e4edad1e6dd53035bb.jpg'),
 (3, 'Baner 3', '1656153601_096ccd0c6c3fcffb168a.jpeg');
 
 -- --------------------------------------------------------
@@ -106,6 +106,31 @@ INSERT INTO `tbl_jurusan` (`id_jurusan`, `jurusan`) VALUES
 (1, 'Tidak Ada'),
 (2, 'MTs IPA'),
 (3, 'MTs IPS');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_lampiran`
+--
+
+CREATE TABLE `tbl_lampiran` (
+  `id_lampiran` int(2) NOT NULL,
+  `lampiran` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_lampiran`
+--
+
+INSERT INTO `tbl_lampiran` (`id_lampiran`, `lampiran`) VALUES
+(1, 'Kartu Keluarga'),
+(2, 'Ijazah'),
+(3, 'SKHUN'),
+(5, 'Akte Kelahiran'),
+(6, 'FC Nilai Raport'),
+(7, 'Kartu NISN'),
+(8, 'Sertifikat'),
+(9, 'KIP');
 
 -- --------------------------------------------------------
 
@@ -194,15 +219,16 @@ CREATE TABLE `tbl_setting` (
   `email` varchar(255) DEFAULT NULL,
   `web` varchar(255) DEFAULT NULL,
   `deskripsi` text DEFAULT NULL,
-  `logo` varchar(255) DEFAULT NULL
+  `logo` varchar(255) DEFAULT NULL,
+  `beranda` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_setting`
 --
 
-INSERT INTO `tbl_setting` (`id`, `nama_sekolah`, `alamat`, `kecamatan`, `kabupaten`, `provinsi`, `no_telp`, `email`, `web`, `deskripsi`, `logo`) VALUES
-(1, 'Pondok Pesantren Al-Iman Muntilan', 'Jl. Talun, Patosan, Sedayu', 'Muntilan', 'Muntilan', 'Jawa Tengah', '0293587367', 'pondokiman@gmail.com', 'https://pesantrenaliman.or.id/', 'Unggul dalam akhlaq, ilmu, prestasi, life skill, dan sosial dakwah                                                                                                                                            ', '1654964124_3632054bfa8040f452cd.png');
+INSERT INTO `tbl_setting` (`id`, `nama_sekolah`, `alamat`, `kecamatan`, `kabupaten`, `provinsi`, `no_telp`, `email`, `web`, `deskripsi`, `logo`, `beranda`) VALUES
+(1, 'Pondok Pesantren Al-Iman Muntilan', 'Jl. Talun, Patosan, Sedayu', 'Muntilan', 'Muntilan', 'Jawa Tengah', '0293587367', 'pondokiman@gmail.com', 'https://pesantrenaliman.or.id/', 'Unggul dalam akhlaq, ilmu, prestasi, life skill, dan sosial dakwah                                                                                                                                            ', '1654964124_3632054bfa8040f452cd.png', '                    <h5 style=\"text-align: center; margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\" class=\"\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\"><b>PPDB Online Pondok Pesantrean Al Iman Muntilan</b></span></h5><p style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\" class=\"\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\"><br></span></p><p style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\" class=\"\"><b><span style=\"font-family: \" source=\"\" sans=\"\" pro\";=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);\"=\"\">Terkait syaratnya di antaranya:</span></b></p><ul><li style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);\"=\"\"> Akta Kelahiran</span></li><li style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);\"=\"\">Kartu Keluarga</span></li><li style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);\"=\"\">Nilai Rapor</span></li><li style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);\"=\"\">Syarat Kelulusan</span></li><li style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);\"=\"\">Sertifikat akreditasi sekolah asal</span></li><li style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);\"=\"\">Surat pertanggungjawaban mutlak keabsahan dokumen</span></li></ul><p style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\" class=\"\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);\"=\"\"><br></span><span style=\"font-family: \" source=\"\" sans=\"\" pro\";=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);\"=\"\"><b>Adapun tata cara pendaftarannya sebagai berikut;</b></span></p><h2 dir=\"ltr\" style=\"font-family: \" open=\"\" sans\",=\"\" \"helvetica=\"\" neue\",=\"\" helvetica,=\"\" arial,=\"\" sans-serif;=\"\" line-height:=\"\" 1.1;=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);=\"\" margin-top:=\"\" 21px;=\"\" margin-bottom:=\"\" 10.5px;=\"\" font-size:=\"\" 32px;\"=\"\"><strong style=\"font-weight: bold;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">1. Pembuatan Akun PPDB</span></span></strong></h2><ul style=\"margin-bottom: 10.5px; color: rgb(34, 34, 34); font-family: \" open=\"\" sans\",=\"\" \"helvetica=\"\" neue\",=\"\" helvetica,=\"\" arial,=\"\" sans-serif;=\"\" font-size:=\"\" 15px;\"=\"\"><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">kunjungi situs PPDB online sesuai daerah (namadaerah.siap-ppdb.com)</span></span></p></li><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">isi formulir dan lengkapi berkas persyaratan digital</span></span></p></li><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">mendapat bukti pengajuan akun berisi PIN (token)</span></span></p></li></ul><h2 dir=\"ltr\" style=\"font-family: \" open=\"\" sans\",=\"\" \"helvetica=\"\" neue\",=\"\" helvetica,=\"\" arial,=\"\" sans-serif;=\"\" line-height:=\"\" 1.1;=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);=\"\" margin-top:=\"\" 21px;=\"\" margin-bottom:=\"\" 10.5px;=\"\" font-size:=\"\" 32px;\"=\"\"><strong style=\"font-weight: bold;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">2. Aktivasi Akun</span></span></strong></h2><ul style=\"margin-bottom: 10.5px; color: rgb(34, 34, 34); font-family: \" open=\"\" sans\",=\"\" \"helvetica=\"\" neue\",=\"\" helvetica,=\"\" arial,=\"\" sans-serif;=\"\" font-size:=\"\" 15px;\"=\"\"><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">aktivasi di situs PPDB online</span></span></p></li><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">ubah token dengan kata sandi pribadi</span></span></p></li></ul><h2 dir=\"ltr\" style=\"font-family: \" open=\"\" sans\",=\"\" \"helvetica=\"\" neue\",=\"\" helvetica,=\"\" arial,=\"\" sans-serif;=\"\" line-height:=\"\" 1.1;=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);=\"\" margin-top:=\"\" 21px;=\"\" margin-bottom:=\"\" 10.5px;=\"\" font-size:=\"\" 32px;\"=\"\"><strong style=\"font-weight: bold;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">3. Pendaftaran</span></span></strong></h2><ul style=\"margin-bottom: 10.5px; color: rgb(34, 34, 34); font-family: \" open=\"\" sans\",=\"\" \"helvetica=\"\" neue\",=\"\" helvetica,=\"\" arial,=\"\" sans-serif;=\"\" font-size:=\"\" 15px;\"=\"\"><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">kunjungi situs PPDB online</span></span></p></li><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">masuk sesuai akun PPDB</span></span></p></li><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">pilih sekolah tujuan</span></span></p></li><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">mendapat tanda bukti pendaftaran</span></span></p></li><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">proses seleksi</span></span></p></li></ul><h2 dir=\"ltr\" style=\"font-family: \" open=\"\" sans\",=\"\" \"helvetica=\"\" neue\",=\"\" helvetica,=\"\" arial,=\"\" sans-serif;=\"\" line-height:=\"\" 1.1;=\"\" color:=\"\" rgb(34,=\"\" 34,=\"\" 34);=\"\" margin-top:=\"\" 21px;=\"\" margin-bottom:=\"\" 10.5px;=\"\" font-size:=\"\" 32px;\"=\"\"><strong style=\"font-weight: bold;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">4. Lapor Diri</span></span></strong></h2><ul style=\"margin-bottom: 10.5px; color: rgb(34, 34, 34); font-family: \" open=\"\" sans\",=\"\" \"helvetica=\"\" neue\",=\"\" helvetica,=\"\" arial,=\"\" sans-serif;=\"\" font-size:=\"\" 15px;\"=\"\"><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">kunjungi situs PPDB online</span></span></p></li><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">masuk sebagai akun PPDB</span></span></p></li><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">pilih lapor diri</span></span></p></li><li dir=\"ltr\"><p dir=\"ltr\" style=\"margin-right: 0px; margin-bottom: 10.5px; margin-left: 0px;\"><span style=\"font-size: 16px;\"><span style=\"font-family: \" source=\"\" sans=\"\" pro\";\"=\"\">mendapat tanda bukti lapor diri sebagai murid baru sekolah tujuan</span></span></p></li></ul>                ');
 
 -- --------------------------------------------------------
 
@@ -302,6 +328,12 @@ ALTER TABLE `tbl_jurusan`
   ADD PRIMARY KEY (`id_jurusan`);
 
 --
+-- Indeks untuk tabel `tbl_lampiran`
+--
+ALTER TABLE `tbl_lampiran`
+  ADD PRIMARY KEY (`id_lampiran`);
+
+--
 -- Indeks untuk tabel `tbl_pekerjaan`
 --
 ALTER TABLE `tbl_pekerjaan`
@@ -357,7 +389,7 @@ ALTER TABLE `tbl_agama`
 -- AUTO_INCREMENT untuk tabel `tbl_baner`
 --
 ALTER TABLE `tbl_baner`
-  MODIFY `id_baner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_baner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_jalur_masuk`
@@ -370,6 +402,12 @@ ALTER TABLE `tbl_jalur_masuk`
 --
 ALTER TABLE `tbl_jurusan`
   MODIFY `id_jurusan` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_lampiran`
+--
+ALTER TABLE `tbl_lampiran`
+  MODIFY `id_lampiran` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_pekerjaan`
