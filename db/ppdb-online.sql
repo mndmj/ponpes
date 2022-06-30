@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Jun 2022 pada 19.25
+-- Waktu pembuatan: 30 Jun 2022 pada 21.00
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -84,8 +84,8 @@ CREATE TABLE `tbl_jalur_masuk` (
 INSERT INTO `tbl_jalur_masuk` (`id_jalur_masuk`, `jalur_masuk`, `kuota`) VALUES
 (1, 'Zonasi', 100),
 (2, 'Prestasi', 25),
-(5, 'Afirmasi', 40),
-(6, 'Perpindahan', 10);
+(3, 'Afirmasi', 40),
+(4, 'Perpindahan', 10);
 
 -- --------------------------------------------------------
 
@@ -245,16 +245,17 @@ CREATE TABLE `tbl_siswa` (
   `jk` varchar(1) DEFAULT NULL,
   `tempat_lahir` varchar(255) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `password` varchar(255) DEFAULT NULL,
+  `id_jalur_masuk` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_siswa`
 --
 
-INSERT INTO `tbl_siswa` (`id_siswa`, `no_pendaftaran`, `tgl_pendaftaran`, `nisn`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `password`) VALUES
-(1, '202206230001', '2022-06-23', '1234567890', 'Muhammad Nasrullah', 'L', 'Makassar', '2002-03-25', '032002'),
-(3, '202206240001', '2022-06-24', '1234567891', 'Adella Nawang', 'P', 'Klaten', '2006-09-17', '092006');
+INSERT INTO `tbl_siswa` (`id_siswa`, `no_pendaftaran`, `tgl_pendaftaran`, `nisn`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `password`, `id_jalur_masuk`) VALUES
+(1, '202206230001', '2022-06-23', '1234567890', 'Muhammad Nasrullah', 'L', 'Makassar', '2002-03-25', '032002', 2),
+(3, '202206240001', '2022-06-24', '1234567891', 'Adella Nawang', 'P', 'Klaten', '2006-09-17', '092006', 2);
 
 -- --------------------------------------------------------
 
