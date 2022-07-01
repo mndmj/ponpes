@@ -15,6 +15,7 @@
                 Lengkapi terlebih dahulu biodata Anda sebelum melakukan Apply Pendaftaran !!!
             </div>
             <?php
+            session()->getFlashdata('errors');
             if (session()->get('pesan')) {
                 echo '<div class="alert alert-success alert-dismissible alertt">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -28,7 +29,6 @@
                     <div class="card">
                         <div class="card-header bg-info">
                             <h3 class="card-title text-uppercase"><b>Pendaftaran</b></h3>
-
                             <div class="card-tools">
                                 <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#editPendaftaran">
                                     <i class="fas fa-pencil-alt"></i>
@@ -58,16 +58,22 @@
                     <div class="card">
                         <div class="card-header bg-info">
                             <h3 class="card-title"><b>FOTO</b></h3>
-
                             <div class="card-tools">
-                                <button type="button" class="btn btn-xs btn-light px-2">
+                                <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#foto">
                                     <i class="fas fa-pencil-alt"></i>
                                 </button>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="text-center">
-                                <img class="img-fluid pad mb-3" src="<?= base_url('foto/ppMissing.jpg') ?>">
+                                <small class="text-danger">
+                                    <b><?= $validation->hasError('foto') ? $validation->getError('foto') : '' ?></b>
+                                </small>
+                                <?php if ($siswa['foto'] == null) { ?>
+                                    <img class="img-fluid pad mb-3" src="<?= base_url('foto/blank.jpg') ?>">
+                                <?php } else { ?>
+                                    <img class="img-fluid pad mb-3" src="<?= base_url('foto/' . $siswa['foto']) ?>">
+                                <?php } ?>
                                 <strong>NISN</strong>
                                 <p class="text-muted"><?= $siswa['nisn'] ?></p>
                             </div>
@@ -101,7 +107,11 @@
                                     <p class="text-muted"></p>
                                     <hr>
 
-                                    <strong>siswa</strong>
+                                    <strong>Status di Keluarga</strong>
+                                    <p class="text-muted"></p>
+                                    <hr>
+
+                                    <strong>Jumlah Saudara</strong>
                                     <p class="text-muted"></p>
                                 </div>
                                 <div class="col-sm-6">
@@ -437,6 +447,46 @@
     </div>
 </div>
 <!-- end modal editPendaftaran -->
+
+<!-- modal foto -->
+<div class="modal fade" id="foto">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title">Foto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open_multipart('siswa/updateFoto/' . $siswa['id_siswa'])   ?>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>NISN</label>
+                    <input class="form-control" value="<?= $siswa['nisn'] ?>" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Ganti Foto</label><br>
+                    <strong class="text-info">*max ukuran gambar 1 Mb</strong>
+                    <input type="file" accept="image/*" name="foto" id="preview_gambar" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Preview</label><br>
+                    <?php if ($siswa['foto'] == null) { ?>
+                        <img src="<?= base_url('foto/blank.jpg') ?>" id="gambar_load" width="200px">
+                    <?php } else { ?>
+                        <img src="<?= base_url('foto/' . $siswa['foto']) ?>" id="gambar_load" width="200px">
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+<!-- end modal editPendaftaran - foto -->
 
 <script>
     window.setTimeout(
