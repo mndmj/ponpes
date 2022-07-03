@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jun 2022 pada 21.00
+-- Waktu pembuatan: 03 Jul 2022 pada 22.02
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -246,16 +246,42 @@ CREATE TABLE `tbl_siswa` (
   `tempat_lahir` varchar(255) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `id_jalur_masuk` int(2) DEFAULT NULL
+  `id_jalur_masuk` int(2) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL,
+  `nik` varchar(25) DEFAULT NULL,
+  `id_agama` int(2) DEFAULT NULL,
+  `id_status` int(2) DEFAULT NULL,
+  `jml_saudara` int(4) DEFAULT NULL,
+  `no_telpon` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_siswa`
 --
 
-INSERT INTO `tbl_siswa` (`id_siswa`, `no_pendaftaran`, `tgl_pendaftaran`, `nisn`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `password`, `id_jalur_masuk`) VALUES
-(1, '202206230001', '2022-06-23', '1234567890', 'Muhammad Nasrullah', 'L', 'Makassar', '2002-03-25', '032002', 2),
-(3, '202206240001', '2022-06-24', '1234567891', 'Adella Nawang', 'P', 'Klaten', '2006-09-17', '092006', 2);
+INSERT INTO `tbl_siswa` (`id_siswa`, `no_pendaftaran`, `tgl_pendaftaran`, `nisn`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `password`, `id_jalur_masuk`, `foto`, `nik`, `id_agama`, `id_status`, `jml_saudara`, `no_telpon`) VALUES
+(1, '202206230001', '2022-06-23', '1234567890', 'Muhammad Nasrullah', 'L', 'Makassar', '2002-03-25', '032002', 2, '1656875575_390665a80abb336fc661.jpg', '3313112503020003', 1, 1, 3, '08979086055'),
+(3, '202206240001', '2022-06-24', '1234567891', 'Adella Nawang', 'P', 'Klaten', '2006-09-17', '092006', 2, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_status_keluarga`
+--
+
+CREATE TABLE `tbl_status_keluarga` (
+  `id_status` int(2) NOT NULL,
+  `status` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_status_keluarga`
+--
+
+INSERT INTO `tbl_status_keluarga` (`id_status`, `status`) VALUES
+(1, 'Anak Kandung'),
+(2, 'Anak Tiri'),
+(5, 'Anak Angkat');
 
 -- --------------------------------------------------------
 
@@ -365,6 +391,12 @@ ALTER TABLE `tbl_siswa`
   ADD PRIMARY KEY (`id_siswa`);
 
 --
+-- Indeks untuk tabel `tbl_status_keluarga`
+--
+ALTER TABLE `tbl_status_keluarga`
+  ADD PRIMARY KEY (`id_status`);
+
+--
 -- Indeks untuk tabel `tbl_ta`
 --
 ALTER TABLE `tbl_ta`
@@ -439,6 +471,12 @@ ALTER TABLE `tbl_setting`
 --
 ALTER TABLE `tbl_siswa`
   MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_status_keluarga`
+--
+ALTER TABLE `tbl_status_keluarga`
+  MODIFY `id_status` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_ta`
