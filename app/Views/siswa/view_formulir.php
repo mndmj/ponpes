@@ -4,7 +4,7 @@
 <div class="col-sm-12">
     <div class="card card-outline card-info">
         <div class="card-header">
-            <h3 class="card-title">Biodata Peserta Didik</h3>
+            <h3 class="card-title">Formulir Pendaftaran Peserta Didik</h3>
             <!-- <div class="float-right">
                 <b>No.Pendaftaran</b> - <a class="text-muted">202206230001</a>
             </div> -->
@@ -15,7 +15,9 @@
                 Lengkapi terlebih dahulu biodata Anda sebelum melakukan Apply Pendaftaran !!!
             </div>
             <?php
+
             session()->getFlashdata('errors');
+
             if (session()->get('pesan')) {
                 echo '<div class="alert alert-success alert-dismissible alertt">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -66,14 +68,15 @@
                         </div>
                         <div class="card-body">
                             <div class="text-center">
-                                <small class="text-danger">
-                                    <b><?= $validation->hasError('foto') ? $validation->getError('foto') : '' ?></b>
-                                </small>
                                 <?php if ($siswa['foto'] == null) { ?>
                                     <img class="img-fluid pad mb-3" src="<?= base_url('foto/blank.jpg') ?>">
                                 <?php } else { ?>
                                     <img class="img-fluid pad mb-3" src="<?= base_url('foto/' . $siswa['foto']) ?>">
                                 <?php } ?>
+                                <small class="text-danger">
+                                    <b><?= $validation->hasError('foto') ? $validation->getError('foto') : '' ?></b>
+                                </small>
+                                <br>
                                 <strong>NISN</strong>
                                 <p class="text-muted"><?= $siswa['nisn'] ?></p>
                             </div>
@@ -86,7 +89,7 @@
                             <h3 class="card-title text-uppercase"><b>Identitas Peserta Didik</b></h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-xs btn-light px-2">
+                                <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#siswa">
                                     <i class="fas fa-pencil-alt"></i>
                                 </button>
                             </div>
@@ -95,36 +98,46 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <strong>Nama Lengkap</strong>
-                                    <p class="text-muted"><?= $siswa['nama_lengkap'] ?></p>
+                                    <?= ($siswa['nama_lengkap'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nama_lengkap'] . '</p>' ?>
                                     <hr>
                                 </div>
                                 <div class="col-sm-6 border-right">
                                     <strong>Tempat Lahir</strong>
-                                    <p class="text-muted"><?= $siswa['tempat_lahir'] ?></p>
+                                    <?= ($siswa['tempat_lahir'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['tempat_lahir'] . '</p>' ?>
                                     <hr>
 
                                     <strong>NIK</strong>
-                                    <p class="text-muted"></p>
+                                    <?= ($siswa['nik'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nik'] . '</p>' ?>
                                     <hr>
 
                                     <strong>Status di Keluarga</strong>
-                                    <p class="text-muted"></p>
+                                    <?= ($siswa['status'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['status'] . '</p>' ?>
                                     <hr>
 
                                     <strong>Jumlah Saudara</strong>
-                                    <p class="text-muted"></p>
+                                    <?= ($siswa['jml_saudara'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['jml_saudara'] . '</p>' ?>
                                 </div>
                                 <div class="col-sm-6">
                                     <strong>Tanggal Lahir</strong>
-                                    <p class="text-muted"><?= $siswa['tgl_lahir'] ?></p>
+                                    <?= ($siswa['tgl_lahir'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['tgl_lahir'] . '</p>' ?>
                                     <hr>
 
                                     <strong>Jenis Kelamin</strong>
-                                    <p class="text-muted"><?= $siswa['jk'] ?></p>
+                                    <?php if ($siswa['jk'] == 'L') {
+                                        $jk = 'Laki-laki';
+                                    } elseif ($siswa['jk'] == 'P') {
+                                        $jk = 'Perempuan';
+                                    }
+                                    ?>
+                                    <?= ($siswa['jk'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $jk . '</p>' ?>
+                                    <hr>
+
+                                    <strong>Agama</strong>
+                                    <?= ($siswa['agama'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['agama'] . '</p>' ?>
                                     <hr>
 
                                     <strong>Nomor Telpon</strong>
-                                    <p class="text-muted"></p>
+                                    <?= ($siswa['no_telpon'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['no_telpon'] . '</p>' ?>
                                 </div>
                             </div>
                         </div>
@@ -467,7 +480,7 @@
                 <div class="form-group">
                     <label>Ganti Foto</label><br>
                     <strong class="text-info">*max ukuran gambar 1 Mb</strong>
-                    <input type="file" accept="image/*" name="foto" id="preview_gambar" class="form-control">
+                    <input type="file" name="foto" accept="image/*" id="preview_gambar" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Preview</label><br>
@@ -487,6 +500,93 @@
     </div>
 </div>
 <!-- end modal editPendaftaran - foto -->
+
+<!-- modal siswa -->
+<div class="modal fade" id="siswa">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title">Identitas Peserta Didik</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open('siswa/updateIdentitasPesertaDidik/' . $siswa['id_siswa'])   ?>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input class="form-control" name="nama_lengkap" value="<?= $siswa['nama_lengkap'] ?>" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Tempat Lahir</label>
+                            <input class="form-control" name="tempat_lahir" value="<?= $siswa['tempat_lahir'] ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label>NIK</label>
+                            <input class="form-control" name="nik" value="<?= $siswa['nik'] ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Status Di Keluarga</label>
+                            <select name="id_status" class="form-control">
+                                <option value="">--Pilih Status--</option>
+                                <?php foreach ($status as $key => $value) { ?>
+                                    <option value="<?= $value['id_status'] ?>" <?= $siswa['id_status'] == $value['id_status'] ? 'selected' : '' ?>><?= $value['status'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Jumlah Saudara</label>
+                            <input class="form-control" name="jml_saudara" value="<?= $siswa['jml_saudara'] ?>" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Tanggal Lahir</label>
+                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                <input type="text" name="tgl_lahir" value="<?= $siswa['tgl_lahir'] ?>" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <!-- <input class="form-control" name="tgl_lahir" value="<?= $siswa['tgl_lahir'] ?>" required> -->
+                        </div>
+                        <div class="form-group">
+                            <label>Jenis Kelamin</label>
+                            <select name="jk" class="form-control">
+                                <option value="L" <?= $siswa['jk'] == 'L' ? 'selected' : '' ?>>Laki-laki</option>
+                                <option value="P" <?= $siswa['jk'] == 'P' ? 'selected' : '' ?>>Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Agama</label>
+                            <select name="id_agama" class="form-control">
+                                <option value="">--Pilih Agama--</option>
+                                <?php foreach ($agama as $key => $value) { ?>
+                                    <option value="<?= $value['id_agama'] ?>" <?= $siswa['id_agama'] == $value['id_agama'] ? 'selected' : '' ?>><?= $value['agama'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Telpon</label>
+                            <input class="form-control" name="no_telpon" value="<?= $siswa['no_telpon'] ?>" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+<!-- end modal siswa -->
+
 
 <script>
     window.setTimeout(

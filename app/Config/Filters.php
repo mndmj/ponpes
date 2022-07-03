@@ -74,6 +74,7 @@ class Filters extends BaseConfig
                     'jalurmasuk', 'jalurmasuk/*',
                     'siswa', 'siswa/*',
                     'lampiran', 'lampiran/*',
+                    'statusdikeluarga', 'statusdikeluarga/*',
                 ]
             ],
             'filtersiswa' => [

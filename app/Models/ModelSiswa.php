@@ -14,7 +14,7 @@ class ModelSiswa extends Model
     protected $returnType     = 'array';
 
     protected $allowedFields = [
-        'id_siswa', 'no_pendaftaran', 'tgl_pendaftaran', 'nisn', 'nama_lengkap', 'jk', 'tempat_lahir', 'tgl_lahir', 'password', 'id_jalur_masuk', 'foto'
+        'id_siswa', 'no_pendaftaran', 'tgl_pendaftaran', 'nisn', 'nama_lengkap', 'jk', 'tempat_lahir', 'tgl_lahir', 'password', 'id_jalur_masuk', 'foto', 'nik', 'id_agama', 'id_status', 'jml_saudara', 'no_telpon'
     ];
 
     public function getBiodataSiswa()
@@ -25,6 +25,8 @@ class ModelSiswa extends Model
                 session()->get('id_siswa')
             )
             ->join('tbl_jalur_masuk', 'tbl_jalur_masuk.id_jalur_masuk = tbl_siswa.id_jalur_masuk', 'left')
+            ->join('tbl_agama', 'tbl_agama.id_agama = tbl_siswa.id_agama', 'left')
+            ->join('tbl_status_keluarga', 'tbl_status_keluarga.id_status = tbl_siswa.id_status', 'left')
             ->get()->getRowArray();
     }
 

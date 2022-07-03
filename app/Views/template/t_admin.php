@@ -149,8 +149,14 @@ $setting = $db->table('tbl_setting')
                 </li>
                 <li class="nav-item">
                   <a href="<?= base_url('agama') ?>" class="nav-link">
-                    <i class="nav-icon fas fa-mosque  "></i>
+                    <i class="nav-icon fas fa-mosque"></i>
                     <p>Agama</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('statusdikeluarga') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-baby"></i>
+                    <p>Status di keluarga</p>
                   </a>
                 </li>
                 <li class="nav-item">
