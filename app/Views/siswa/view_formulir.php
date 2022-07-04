@@ -149,7 +149,7 @@
                             <h3 class="card-title text-uppercase"><b>Alamat Peserta Didik</b></h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-xs btn-light px-2">
+                                <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#alamat">
                                     <i class="fas fa-pencil-alt"></i>
                                 </button>
                             </div>
@@ -158,17 +158,21 @@
                             <div class="row">
                                 <div class="col-sm-6 border-right">
                                     <strong>Alamat</strong>
-                                    <p class="text-muted"></p>
+                                    <?= ($siswa['alamat'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted text-uppercase">' . $siswa['alamat'] . '</p>' ?>
+
                                     <hr>
                                     <strong>Kecamatan</strong>
-                                    <p class="text-muted"></p>
+                                    <?= ($siswa['nama_kecamatan'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nama_kecamatan'] . '</p>' ?>
+
                                 </div>
                                 <div class="col-sm-6">
                                     <strong>Kabupaten/Kota</strong>
-                                    <p class="text-muted"></p>
+                                    <?= ($siswa['nama_kabupaten'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nama_kabupaten'] . '</p>' ?>
+
                                     <hr>
                                     <strong>Provinsi</strong>
-                                    <p class="text-muted"></p>
+                                    <?= ($siswa['nama_provinsi'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nama_provinsi'] . '</p>' ?>
+
                                 </div>
                             </div>
                         </div>
@@ -221,29 +225,44 @@
                                         <h3 class="card-title text-uppercase"><b>Data Ayah</b></h3>
 
                                         <div class="card-tools">
-                                            <button type="button" class="btn btn-xs btn-light px-2">
+                                            <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#ayah">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </button>
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <strong>NIK Ayah</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <?= ($siswa['nik_ayah'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nik_ayah'] . '</p>' ?>
+
                                         <hr>
                                         <strong>Nama Ayah</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <?= ($siswa['nama_ayah'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nama_ayah'] . '</p>' ?>
+
                                         <hr>
                                         <strong>Pekerjaan</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <?= ($siswa['pekerjaan_ayah'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['pekerjaan_ayah'] . '</p>' ?>
+
                                         <hr>
                                         <strong>Pendidikan</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <?= ($siswa['pendidikan_ayah'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['pendidikan_ayah'] . '</p>' ?>
+
                                         <hr>
                                         <strong>Penghasilan</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <?= ($siswa['penghasilan_ayah'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['penghasilan_ayah'] . '</p>' ?>
+
                                         <hr>
-                                        <strong>siswa</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <strong>Agama</strong>
+                                        <?= ($siswa['agama_ayah'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['agama_ayah'] . '</p>' ?>
+
+                                        <hr>
+                                        <strong>Umur Ayah</strong>
+                                        <?= ($siswa['umur_ayah'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['umur_ayah'] . '</p>' ?>
+
+
+                                        <hr>
+                                        <strong>No Telpon Ayah</strong>
+                                        <?= ($siswa['no_telpon_ayah'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['no_telpon_ayah'] . '</p>' ?>
+
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -251,37 +270,47 @@
                                         <h3 class="card-title text-uppercase"><b>Data Ibu</b></h3>
 
                                         <div class="card-tools">
-                                            <button type="button" class="btn btn-xs btn-light px-2">
+                                            <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#ibu">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </button>
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <strong>NIK Ibu</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <?= ($siswa['nik_ibu'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nik_ibu'] . '</p>' ?>
+
                                         <hr>
                                         <strong>Nama Ibu</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <?= ($siswa['nama_ibu'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nama_ibu'] . '</p>' ?>
+
                                         <hr>
                                         <strong>Pekerjaan</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <?= ($siswa['pekerjaan_ibu'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['pekerjaan_ibu'] . '</p>' ?>
+
                                         <hr>
                                         <strong>Pendidikan</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <?= ($siswa['pendidikan_ibu'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['pendidikan_ibu'] . '</p>' ?>
+
                                         <hr>
                                         <strong>Penghasilan</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <?= ($siswa['penghasilan_ibu'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['penghasilan_ibu'] . '</p>' ?>
+
                                         <hr>
-                                        <strong>siswa</strong>
-                                        <p class="text-muted">Malibu, California</p>
+                                        <strong>Agama</strong>
+                                        <?= ($siswa['agama_ibu'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['agama_ibu'] . '</p>' ?>
+
+                                        <hr>
+                                        <strong>Umur Ibu</strong>
+                                        <?= ($siswa['umur_ibu'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['umur_ibu'] . '</p>' ?>
+
+
+                                        <hr>
+                                        <strong>No Telpon Ibu</strong>
+                                        <?= ($siswa['no_telpon_ibu'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['no_telpon_ibu'] . '</p>' ?>
+
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
-                                    <hr>
-                                    <strong>Nomor Telpon Orang Tua</strong>
-                                    <p class="text-muted">Malibu, California</p>
-                                    <hr>
-
                                     <div class="card-header bg-olive">
                                         <h3 class="card-title text-uppercase"><b>Alamat Orang TUa</b></h3>
 
@@ -335,7 +364,7 @@
                                     <p class="text-muted">Malibu, California</p>
                                 </div>
                                 <div class="col-sm-6">
-                                    <strong>siswa</strong>
+                                    <strong>Agama</strong>
                                     <p class="text-muted">Malibu, California</p>
                                     <hr>
                                     <strong>Pendidikan</strong>
@@ -587,6 +616,247 @@
 </div>
 <!-- end modal siswa -->
 
+<!-- modal data alamat -->
+<div class="modal fade" id="alamat">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title">Data Alamat Lengkap</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open('siswa/updateDataAlamat/' . $siswa['id_siswa'])   ?>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Provinsi</label>
+                    <select name="id_provinsi" id="provinsi" class="form-control">
+                        <option value="">--Pilih Provinsi--</option>
+                        <?php foreach ($provinsi as $key => $value) { ?>
+                            <option value="<?= $value['id_provinsi'] ?>">
+                                <?= $value['nama_provinsi'] ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Kabupaten/Kota</label>
+                    <select name="id_kabupaten" id="kabupaten" class="form-control">
+                        <option value="">--Pilih Kabupaten/Kota--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Kecamatan</label>
+                    <select name="id_kecamatan" id="kecamatan" class="form-control">
+                        <option value="">--Pilih Kecamatan--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Alamat</label>
+                    <input class="form-control" name="alamat" placeholder="Alamat" value="<?= $siswa['alamat'] ?>" required>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+<!-- end modal alamat -->
+
+<!-- modal ayah -->
+<div class="modal fade" id="ayah">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title">Data Ayah</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open('siswa/updateDataAyah/' . $siswa['id_siswa'])   ?>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>NIK Ayah</label>
+                            <input class="form-control" name="nik_ayah" value="<?= $siswa['nik_ayah'] ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nama Ayah</label>
+                            <input class="form-control" name="nama_ayah" value="<?= $siswa['nama_ayah'] ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pekerjaan Ayah</label>
+                            <select class="form-control" name="pekerjaan_ayah">
+                                <option value="">--Pilih Pekerjaan--</option>
+                                <?php foreach ($pekerjaan as $key => $value) { ?>
+                                    <option value="<?= $value['pekerjaan'] ?>" <?= $siswa['pekerjaan_ayah'] == $value['pekerjaan'] ? 'selected' : '' ?>><?= $value['pekerjaan'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Pendidikan Ayah</label>
+                            <select class="form-control" name="pendidikan_ayah">
+                                <option value="">--Pilih Pendidikan--</option>
+                                <?php foreach ($pendidikan as $key => $value) { ?>
+                                    <option value="<?= $value['pendidikan'] ?>" <?= $siswa['pendidikan_ayah'] == $value['pendidikan'] ? 'selected' : '' ?>><?= $value['pendidikan'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Penghasilan Ayah</label>
+                            <select class="form-control" name="penghasilan_ayah">
+                                <option value="">--Pilih Penghasilan--</option>
+                                <?php foreach ($penghasilan as $key => $value) { ?>
+                                    <option value="<?= $value['penghasilan'] ?>" <?= $siswa['penghasilan_ayah'] == $value['penghasilan'] ? 'selected' : '' ?>><?= $value['penghasilan'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Agama</label>
+                            <select name="agama_ayah" class="form-control">
+                                <option value="">--Pilih Agama--</option>
+                                <?php foreach ($agama as $key => $value) { ?>
+                                    <option value="<?= $value['agama'] ?>" <?= $siswa['agama_ayah'] == $value['agama'] ? 'selected' : '' ?>><?= $value['agama'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Umur Ayah</label>
+                            <input class="form-control" name="umur_ayah" value="<?= $siswa['umur_ayah'] ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Telpon Ayah</label>
+                            <input class="form-control" name="no_telpon_ayah" value="<?= $siswa['no_telpon_ayah'] ?>" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+<!-- end modal ayah -->
+
+<!-- modal ibu -->
+<div class="modal fade" id="ibu">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title">Data Ibu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open('siswa/updateDataIbu/' . $siswa['id_siswa'])   ?>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>NIK Ibu</label>
+                            <input class="form-control" name="nik_ibu" value="<?= $siswa['nik_ibu'] ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nama Ibu</label>
+                            <input class="form-control" name="nama_ibu" value="<?= $siswa['nama_ibu'] ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pekerjaan Ibu</label>
+                            <select class="form-control" name="pekerjaan_ibu">
+                                <option value="">--Pilih Pekerjaan--</option>
+                                <?php foreach ($pekerjaan as $key => $value) { ?>
+                                    <option value="<?= $value['pekerjaan'] ?>" <?= $siswa['pekerjaan_ibu'] == $value['pekerjaan'] ? 'selected' : '' ?>><?= $value['pekerjaan'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Pendidikan Ibu</label>
+                            <select class="form-control" name="pendidikan_ibu">
+                                <option value="">--Pilih Pendidikan--</option>
+                                <?php foreach ($pendidikan as $key => $value) { ?>
+                                    <option value="<?= $value['pendidikan'] ?>" <?= $siswa['pendidikan_ibu'] == $value['pendidikan'] ? 'selected' : '' ?>><?= $value['pendidikan'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Penghasilan Ibu</label>
+                            <select class="form-control" name="penghasilan_ibu">
+                                <option value="">--Pilih Penghasilan--</option>
+                                <?php foreach ($penghasilan as $key => $value) { ?>
+                                    <option value="<?= $value['penghasilan'] ?>" <?= $siswa['penghasilan_ibu'] == $value['penghasilan'] ? 'selected' : '' ?>><?= $value['penghasilan'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Agama</label>
+                            <select name="agama_ibu" class="form-control">
+                                <option value="">--Pilih Agama--</option>
+                                <?php foreach ($agama as $key => $value) { ?>
+                                    <option value="<?= $value['agama'] ?>" <?= $siswa['agama_ibu'] == $value['agama'] ? 'selected' : '' ?>><?= $value['agama'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Umur Ibu</label>
+                            <input class="form-control" name="umur_ibu" value="<?= $siswa['umur_ibu'] ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Telpon Ibu</label>
+                            <input class="form-control" name="no_telpon_ibu" value="<?= $siswa['no_telpon_ibu'] ?>" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+<!-- end modal ibu -->
+
+<!-- jQuery -->
+<script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#provinsi").change(function() {
+            var id_provinsi = $("#provinsi").val();
+            $.ajax({
+                type: 'GET',
+                url: '<?= base_url('wilayah/dataKabupaten') ?>/' + id_provinsi,
+                success: function(html) {
+                    $("#kabupaten").html(html);
+                }
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        $("#kabupaten").change(function() {
+            var id_kabupaten = $("#kabupaten").val();
+            $.ajax({
+                type: 'GET',
+                url: '<?= base_url('wilayah/dataKecamatan') ?>/' + id_kabupaten,
+                success: function(html) {
+                    $("#kecamatan").html(html);
+                }
+            });
+        });
+    });
+</script>
 
 <script>
     window.setTimeout(

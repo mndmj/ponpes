@@ -7,6 +7,10 @@ use App\Models\ModelSiswa;
 use App\Models\ModelJalurMasuk;
 use App\Models\ModelAgama;
 use App\Models\ModelStatusDiKeluarga;
+use App\Models\ModelPekerjaan;
+use App\Models\ModelPendidikan;
+use App\Models\ModelPenghasilan;
+use App\Models\ModelWilayah;
 
 class Siswa extends BaseController
 {
@@ -16,6 +20,10 @@ class Siswa extends BaseController
         $this->ModelJalurMasuk = new ModelJalurMasuk();
         $this->ModelAgama = new ModelAgama();
         $this->ModelStatusDiKeluarga = new ModelStatusDiKeluarga();
+        $this->ModelPekerjaan = new ModelPekerjaan();
+        $this->ModelPendidikan = new ModelPendidikan();
+        $this->ModelPenghasilan = new ModelPenghasilan();
+        $this->ModelWilayah = new ModelWilayah();
         helper('form');
     }
 
@@ -28,6 +36,10 @@ class Siswa extends BaseController
             'jalur' => $this->ModelJalurMasuk->findAll(),
             'agama' => $this->ModelAgama->findAll(),
             'status' => $this->ModelStatusDiKeluarga->findAll(),
+            'pekerjaan' => $this->ModelPekerjaan->findAll(),
+            'pendidikan' => $this->ModelPendidikan->findAll(),
+            'penghasilan' => $this->ModelPenghasilan->findAll(),
+            'provinsi' => $this->ModelWilayah->getProvinsi(),
             'validation' => \Config\Services::validation(),
         ];
         return view('siswa/view_formulir', $data);
@@ -99,6 +111,59 @@ class Siswa extends BaseController
 
         $this->ModelSiswa->update($id_siswa, $data);
         session()->setFlashdata('pesan', 'Identitas peserta didik berhasil diedit..!!');
+        return redirect()->to('siswa');
+    }
+
+    public function updateDataAyah($id_siswa)
+    {
+        $data = [
+            'id_siswa' => $id_siswa,
+            'nik_ayah' => $this->request->getPost('nik_ayah'),
+            'nama_ayah' => $this->request->getPost('nama_ayah'),
+            'pekerjaan_ayah' => $this->request->getPost('pekerjaan_ayah'),
+            'pendidikan_ayah' => $this->request->getPost('pendidikan_ayah'),
+            'penghasilan_ayah' => $this->request->getPost('penghasilan_ayah'),
+            'agama_ayah' => $this->request->getPost('agama_ayah'),
+            'umur_ayah' => $this->request->getPost('umur_ayah'),
+            'no_telpon_ayah' => $this->request->getPost('no_telpon_ayah'),
+        ];
+
+        $this->ModelSiswa->update($id_siswa, $data);
+        session()->setFlashdata('pesan', 'Data Ayah berhasil diedit..!!');
+        return redirect()->to('siswa');
+    }
+
+    public function updateDataIbu($id_siswa)
+    {
+        $data = [
+            'id_siswa' => $id_siswa,
+            'nik_ibu' => $this->request->getPost('nik_ibu'),
+            'nama_ibu' => $this->request->getPost('nama_ibu'),
+            'pekerjaan_ibu' => $this->request->getPost('pekerjaan_ibu'),
+            'pendidikan_ibu' => $this->request->getPost('pendidikan_ibu'),
+            'penghasilan_ibu' => $this->request->getPost('penghasilan_ibu'),
+            'agama_ibu' => $this->request->getPost('agama_ibu'),
+            'umur_ibu' => $this->request->getPost('umur_ibu'),
+            'no_telpon_ibu' => $this->request->getPost('no_telpon_ibu'),
+        ];
+
+        $this->ModelSiswa->update($id_siswa, $data);
+        session()->setFlashdata('pesan', 'Data Ibu berhasil diedit..!!');
+        return redirect()->to('siswa');
+    }
+
+    public function updateDataAlamat($id_siswa)
+    {
+        $data = [
+            'id_siswa' => $id_siswa,
+            'id_provinsi' => $this->request->getPost('id_provinsi'),
+            'id_kabupaten' => $this->request->getPost('id_kabupaten'),
+            'id_kecamatan' => $this->request->getPost('id_kecamatan'),
+            'alamat' => $this->request->getPost('alamat'),
+        ];
+
+        $this->ModelSiswa->update($id_siswa, $data);
+        session()->setFlashdata('pesan', 'Data alamat berhasil diedit..!!');
         return redirect()->to('siswa');
     }
 }
