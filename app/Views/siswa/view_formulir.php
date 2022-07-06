@@ -5,15 +5,20 @@
     <div class="card card-outline card-info">
         <div class="card-header">
             <h3 class="card-title">Formulir Pendaftaran Peserta Didik</h3>
-            <!-- <div class="float-right">
-                <b>No.Pendaftaran</b> - <a class="text-muted">202206230001</a>
-            </div> -->
         </div>
         <div class="card-body">
-            <div class="alert alert-warning alert-dismissible">
-                <h5><i class="fas fa-exclamation-triangle"></i>&ensp;Pemberitahuan!</h5>
-                Lengkapi terlebih dahulu biodata Anda sebelum melakukan Apply Pendaftaran !!!
-            </div>
+            <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                <div class="alert alert-warning alert-dismissible">
+                    <h5><i class="fas fa-exclamation-triangle"></i>&ensp;Pemberitahuan!</h5>
+                    Lengkapi terlebih dahulu biodata Anda sebelum melakukan Apply Pendaftaran !!!
+                </div>
+            <?php } elseif ($siswa['stat_pendaftaran'] == 1) { ?>
+                <div class="alert alert-dark alert-dismissible">
+                    <h5><i class="fas fa-clipboard-check"></i>&ensp;Data Pendaftaran Anda telah dikirim !!</h5>
+                    Silahkan menunggu sampai pengumuman hasil pendaftaran keluar.
+                </div>
+            <?php } ?>
+
             <?php
 
             session()->getFlashdata('errors');
@@ -26,15 +31,30 @@
                 echo '</h6></div>';
             }
             ?>
+
+            <?php
+            $errors = session()->getFlashdata('errors');
+            if (!empty($errors)) { ?>
+                <div class="alert alert-danger alertt" role="alert">
+                    <ul class="m-0">
+                        <?php foreach ($errors as $error) : ?>
+                            <li><?= esc($error) ?></li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
+            <?php } ?>
+
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header bg-info">
                             <h3 class="card-title text-uppercase"><b>Pendaftaran</b></h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#editPendaftaran">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
+                            <div class="card-tools" data-toggle="tooltip" data-placement="top" title="Edit Data">
+                                <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                                    <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#editPendaftaran">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="card-body">
@@ -60,10 +80,12 @@
                     <div class="card">
                         <div class="card-header bg-info">
                             <h3 class="card-title"><b>FOTO</b></h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#foto">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
+                            <div class="card-tools" data-toggle="tooltip" data-placement="top" title="Edit Data">
+                                <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                                    <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#foto">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="card-body">
@@ -88,10 +110,12 @@
                         <div class="card-header bg-info">
                             <h3 class="card-title text-uppercase"><b>Identitas Peserta Didik</b></h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#siswa">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
+                            <div class="card-tools" data-toggle="tooltip" data-placement="top" title="Edit Data">
+                                <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                                    <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#siswa">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="card-body">
@@ -148,10 +172,12 @@
                         <div class="card-header bg-info">
                             <h3 class="card-title text-uppercase"><b>Alamat Peserta Didik</b></h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#alamat">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
+                            <div class="card-tools" data-toggle="tooltip" data-placement="top" title="Edit Data">
+                                <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                                    <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#alamat">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="card-body">
@@ -183,30 +209,33 @@
                         <div class="card-header bg-info">
                             <h3 class="card-title text-uppercase"><b>Asal Sekolah</b></h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-xs btn-light px-2">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
+                            <div class="card-tools" data-toggle="tooltip" data-placement="top" title="Edit Data">
+                                <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                                    <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#sekolah_asal">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6 border-right">
                                     <strong>Nama Sekolah</strong>
-                                    <p class="text-muted">Malibu, California</p>
+                                    <?= ($siswa['nama_sekolah_asal'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nama_sekolah_asal'] . '</p>' ?>
+
                                     <hr>
                                     <strong>Tahun Lulus</strong>
-                                    <p class="text-muted">Malibu, California</p>
-                                    <hr>
-                                    <strong>No.Ijazah</strong>
-                                    <p class="text-muted">Malibu, California</p>
+                                    <?= ($siswa['tahun_lulus'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['tahun_lulus'] . '</p>' ?>
+
                                 </div>
                                 <div class="col-sm-6">
-                                    <strong>No.SKHUN</strong>
-                                    <p class="text-muted">Malibu, California</p>
+                                    <strong>No.Ijazah</strong>
+                                    <?= ($siswa['no_ijazah'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['no_ijazah'] . '</p>' ?>
+
                                     <hr>
-                                    <strong>Alamat Sekolah</strong>
-                                    <p class="text-muted">Malibu, California</p>
+                                    <strong>No.SKHUN</strong>
+                                    <?= ($siswa['no_skhun'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['no_skhun'] . '</p>' ?>
+
                                 </div>
                             </div>
                         </div>
@@ -221,16 +250,18 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6 border-right">
-                                    <div class="card-header bg-olive">
+                                    <div class="card-header bg-olive border border-info">
                                         <h3 class="card-title text-uppercase"><b>Data Ayah</b></h3>
 
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#ayah">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </button>
+                                        <div class="card-tools" data-toggle="tooltip" data-placement="top" title="Edit Data">
+                                            <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                                                <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#ayah">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </button>
+                                            <?php } ?>
                                         </div>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body border border-info">
                                         <strong>NIK Ayah</strong>
                                         <?= ($siswa['nik_ayah'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nik_ayah'] . '</p>' ?>
 
@@ -266,16 +297,18 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="card-header bg-olive">
+                                    <div class="card-header bg-olive border border-info">
                                         <h3 class="card-title text-uppercase"><b>Data Ibu</b></h3>
 
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#ibu">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </button>
+                                        <div class="card-tools" data-toggle="tooltip" data-placement="top" title="Edit Data">
+                                            <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                                                <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#ibu">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </button>
+                                            <?php } ?>
                                         </div>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body border border-info">
                                         <strong>NIK Ibu</strong>
                                         <?= ($siswa['nik_ibu'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nik_ibu'] . '</p>' ?>
 
@@ -310,143 +343,160 @@
 
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    <div class="card-header bg-olive">
-                                        <h3 class="card-title text-uppercase"><b>Alamat Orang TUa</b></h3>
-
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-xs btn-light px-2">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-6 border-right">
-                                                <strong>Alamat</strong>
-                                                <p class="text-muted">Malibu, California</p>
-                                                <hr>
-                                                <strong>Kecamatan</strong>
-                                                <p class="text-muted">Malibu, California</p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <strong>Kabupaten/Kota</strong>
-                                                <p class="text-muted">Malibu, California</p>
-                                                <hr>
-                                                <strong>Provinsi</strong>
-                                                <p class="text-muted">Malibu, California</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-sm-12 px-4">
+                                    <hr>
+                                    <strong>Alamat Lengkap Orang Tua</strong>
+                                    <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                                        <button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#alamatOrtu">
+                                            <i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="top" title="Edit Data"></i>
+                                        </button>
+                                    <?php } ?>
+                                    <?= ($siswa['alamat_ortu'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted text-uppercase">' . $siswa['alamat_ortu'] . '</p>' ?>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-header bg-info">
-                            <h3 class="card-title text-uppercase"><b>Data Wali</b></h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-xs btn-light px-2">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6 border-right">
-                                    <strong>Nama Wali</strong>
-                                    <p class="text-muted">Malibu, California</p>
-                                    <hr>
-                                    <strong>Pekerjaan</strong>
-                                    <p class="text-muted">Malibu, California</p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <strong>Agama</strong>
-                                    <p class="text-muted">Malibu, California</p>
-                                    <hr>
-                                    <strong>Pendidikan</strong>
-                                    <p class="text-muted">Malibu, California</p>
-                                </div>
-                                <div class="col-sm-12">
-                                    <hr>
-                                    <strong>Nomor Telpon Wali</strong>
-                                    <p class="text-muted">Malibu, California</p>
-                                    <hr>
-                                    <div class="card-header bg-olive">
-                                        <h3 class="card-title text-uppercase"><b>Alamat wali</b></h3>
-
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-xs btn-light px-2">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-6 border-right">
-                                                <strong>Alamat</strong>
-                                                <p class="text-muted">Malibu, California</p>
-                                                <hr>
-                                                <strong>Kecamatan</strong>
-                                                <p class="text-muted">Malibu, California</p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <strong>Kabupaten/Kota</strong>
-                                                <p class="text-muted">Malibu, California</p>
-                                                <hr>
-                                                <strong>Provinsi</strong>
-                                                <p class="text-muted">Malibu, California</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-header bg-info">
-                            <h3 class="card-title text-uppercase"><b>File Pendukung</b></h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-xs btn-light px-2">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <table class="table table-bordered">
-                                    <tr class="text-center">
-                                        <th width="50px">#</th>
-                                        <th>Jenis File</th>
-                                        <th>File</th>
-                                        <th width="100px">Action</th>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-12 text-center">
-                    <a href="" class="btn btn-success px-5">Apply Data Pendaftaran&ensp;<i class="fas fa-check-circle"></i></a>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header bg-info">
+                <h3 class="card-title text-uppercase"><b>Data Wali</b></h3>
+
+                <div class="card-tools" data-toggle="tooltip" data-placement="top" title="Edit Data">
+                    <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                        <button type="button" class="btn btn-xs btn-light px-2" data-toggle="modal" data-target="#wali">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6 border-right">
+                        <strong>Nama Wali</strong>
+                        <?= ($siswa['nama_wali'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['nama_wali'] . '</p>' ?>
+
+                        <hr>
+                        <strong>Pekerjaan</strong>
+                        <?= ($siswa['pekerjaan_wali'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['pekerjaan_wali'] . '</p>' ?>
+
+                        <hr>
+                        <strong>Nomor Telpon Wali</strong>
+                        <?= ($siswa['no_telpon_wali'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['no_telpon_wali'] . '</p>' ?>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <strong>Agama</strong>
+                        <?= ($siswa['agama_wali'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['agama_wali'] . '</p>' ?>
+
+                        <hr>
+                        <strong>Pendidikan</strong>
+                        <?= ($siswa['pendidikan_wali'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['pendidikan_wali'] . '</p>' ?>
+
+                        <hr>
+                        <strong>Alamat Lengkap Wali</strong>
+                        <?= ($siswa['alamat_wali'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted text-uppercase">' . $siswa['alamat_wali'] . '</p>' ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header bg-info">
+                <h3 class="card-title text-uppercase"><b>File Berkas Pendukung/Lampiran</b></h3>
+
+                <div class="card-tools" data-toggle="tooltip" data-placement="top" title="Tambah File Lampiran">
+                    <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                        <button type="button" class="btn btn-xs btn-light py-0" data-toggle="modal" data-target="#berkas">
+                            <i class="fa fa-folder-plus fa-2x"></i>
+                        </button>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <table class="table table-bordered">
+                        <tr class="text-center">
+                            <th width="50px">#</th>
+                            <th width="350px">Lampiran/Jenis Berkas</th>
+                            <th>Keterangan</th>
+                            <th>File</th>
+                            <th width="100px">Action</th>
+                        </tr>
+                        <?php $no = 1;
+                        foreach ($berkas as $key => $value) { ?>
+                            <tr>
+                                <td class="text-center"><?= $no++ ?></td>
+                                <td><?= $value['lampiran'] ?></td>
+                                <td><?= $value['ket'] ?></td>
+                                <td class="text-center">
+                                    <a href="<?= base_url('berkas/' . $value['berkas']) ?>"><i class="far fa-file-pdf fa-2x text-red"></i></a>
+                                </td>
+                                <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+                                    <td class="text-center">
+                                        <a href="<?= base_url('siswa/deleteBerkas/' . $value['id_berkas']) ?>" class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></a>
+                                    </td>
+                                <?php } elseif ($siswa['stat_pendaftaran'] == 1) { ?>
+                                    <td class="text-center">
+                                        <button class="btn btn-dark btn-xs" disabled><i class="far fa-trash-alt"></i></>
+                                    </td>
+                                <?php } ?>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 text-center">
+        <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
+            <button class="btn btn-success px-5" data-toggle="modal" data-target="#apply">
+                Apply Data Pendaftaran&ensp;<i class="fas fa-check-circle"></i>
+            </button>
+        <?php } elseif ($siswa['stat_pendaftaran'] == 1) { ?>
+            <button class="btn btn-success px-5" disabled>
+                Apply Data Pendaftaran&ensp;<i class="fas fa-check-circle"></i>
+            </button>
+        <?php } ?>
+    </div>
 </div>
+
+
+
+
+
+<!-- modal apply -->
+<div class="modal fade" id="apply">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title text-bold">Apakah Anda sudah yakin..?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <img src="<?= base_url('sukses/sukses.png') ?>" class="w-75">
+                </center>
+                <h6>"Data pendaftaran yang sudah di kirim tidak dapat diubah kembali, pastikan Anda telah mengisi data dengan benar !!"</h6>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tidak</button>
+                <a href="<?= base_url('siswa/apply/' . $siswa['id_siswa']) ?>" class="btn btn-primary btn-sm px-3">
+                    Kirim&ensp;<i class="fas fa-paper-plane"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal apply -->
 
 <!-- modal editPendaftaran -->
 <div class="modal fade" id="editPendaftaran">
@@ -666,6 +716,55 @@
 </div>
 <!-- end modal alamat -->
 
+<!-- modal data sekolah asal -->
+<div class="modal fade" id="sekolah_asal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title">Data Sekolah Asal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open('siswa/updateSekolahAsal/' . $siswa['id_siswa'])   ?>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nama Sekolah</label>
+                    <input class="form-control" name="nama_sekolah_asal" placeholder="Nama Sekolah" value="<?= $siswa['nama_sekolah_asal'] ?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Tahun Lulus</label>
+                    <select name="tahun_lulus" class="form-control">
+                        <option value="">--Tahun Lulus--</option>
+                        <?php
+                        $now = date('Y');
+                        for ($i = 2010; $i <= $now; $i++) {
+                        ?>
+                            <option value="<?= $i ?>" <?= $siswa['tahun_lulus'] == $i ? 'selected' : '' ?>>
+                                <?= $i ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>No.Ijazah</label>
+                    <input class="form-control" name="no_ijazah" placeholder="No.Ijazah" value="<?= $siswa['no_ijazah'] ?>" required>
+                </div>
+                <div class="form-group">
+                    <label>No.SKHUN</label>
+                    <input class="form-control" name="no_skhun" placeholder="No.SKHUN" value="<?= $siswa['no_skhun'] ?>" required>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+<!-- end modal sekolah asal -->
+
 <!-- modal ayah -->
 <div class="modal fade" id="ayah">
     <div class="modal-dialog">
@@ -828,6 +927,143 @@
 </div>
 <!-- end modal ibu -->
 
+<!-- modal data alamat orang tua-->
+<div class="modal fade" id="alamatOrtu">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title">Data Alamat Lengkap Orang Tua</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open('siswa/updateDataAlamatOrtu/' . $siswa['id_siswa'])   ?>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Alamat</label>
+                    <input class="form-control" name="alamat_ortu" placeholder="Alamat" value="<?= $siswa['alamat_ortu'] ?>" required>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+<!-- end modal alamat orang tua -->
+
+<!-- modal data wali -->
+<div class="modal fade" id="wali">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title">Data Wali</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open('siswa/updateDataWali/' . $siswa['id_siswa'])   ?>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Nama Wali</label>
+                            <input class="form-control" name="nama_wali" placeholder="Nama Wali" value="<?= $siswa['nama_wali'] ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pekerjaan Wali</label>
+                            <select class="form-control" name="pekerjaan_wali">
+                                <option value="">--Pilih Pekerjaan--</option>
+                                <?php foreach ($pekerjaan as $key => $value) { ?>
+                                    <option value="<?= $value['pekerjaan'] ?>" <?= $siswa['pekerjaan_wali'] == $value['pekerjaan'] ? 'selected' : '' ?>><?= $value['pekerjaan'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Telpon Wali</label>
+                            <input class="form-control" name="no_telpon_wali" placeholder="Nomor Telpon Wali" value="<?= $siswa['no_telpon_wali'] ?>" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Agama</label>
+                            <select name="agama_wali" class="form-control">
+                                <option value="">--Pilih Agama--</option>
+                                <?php foreach ($agama as $key => $value) { ?>
+                                    <option value="<?= $value['agama'] ?>" <?= $siswa['agama_wali'] == $value['agama'] ? 'selected' : '' ?>><?= $value['agama'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Pendidikan Wali</label>
+                            <select class="form-control" name="pendidikan_wali">
+                                <option value="">--Pilih Pendidikan--</option>
+                                <?php foreach ($pendidikan as $key => $value) { ?>
+                                    <option value="<?= $value['pendidikan'] ?>" <?= $siswa['pendidikan_wali'] == $value['pendidikan'] ? 'selected' : '' ?>><?= $value['pendidikan'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Alamat</label>
+                            <input class="form-control" name="alamat_wali" placeholder="Alamat" value="<?= $siswa['alamat_wali'] ?>" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+<!-- end modal wali -->
+
+<!-- modal data berkas lampiran-->
+<div class="modal fade" id="berkas">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title">Tambah Berkas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open_multipart('siswa/addBerkas/' . $siswa['id_siswa'])   ?>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Lampiran/Jenis Berkas</label>
+                    <select name="id_lampiran" class="form-control">
+                        <option value="">--Pilih Lampiran--</option>
+                        <?php foreach ($lampiran as $key => $value) { ?>
+                            <option value="<?= $value['id_lampiran'] ?>"><?= $value['lampiran'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Keterangan</label>
+                    <input class="form-control" name="ket" placeholder="Keterangan" required>
+                </div>
+                <div class="form-group">
+                    <label>File</label><small class="text-red">&ensp;*wajib format PDF</small>
+                    <input class="form-control" name="berkas" type="file" accept=".pdf" required>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+<!-- end modal berkas lampiran -->
+
+
+
 <!-- jQuery -->
 <script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
 <script>
@@ -865,6 +1101,12 @@
                 $(this).remove;
             });
         }, 1500);
+</script>
+
+<script>
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
 
 <?= $this->endSection() ?>

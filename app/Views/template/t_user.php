@@ -23,17 +23,27 @@ $ta = $db->table('tbl_ta')
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?= base_url() ?>/assets/dist/css/adminlte.min.css">
   <!-- daterange picker -->
   <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- Select2 -->
-  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <!-- BS Stepper -->
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/bs-stepper/css/bs-stepper.min.css">
+  <!-- dropzonejs -->
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/dropzone/min/dropzone.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/dist/css/adminlte.min.css">
 </head>
 
 <body class="hold-transition layout-top-nav">
@@ -85,24 +95,24 @@ $ta = $db->table('tbl_ta')
 
         <!-- Right navbar links -->
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-          <li class="nav-item">
-            <?php if (session()->get('nisn') == '') { ?>
+          <?php if (session()->get('nisn') == '') { ?>
+            <li class="nav-item">
               <a class="nav-link" href="<?= base_url('auth/loginSiswa') ?>">
                 <b><i class="fa fa-sign-in-alt"></i> Login</b>
               </a>
-            <?php } else { ?>
-          <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
-              <i class="fas fa-user"></i>&ensp;<?= session()->get('nama_lengkap') ?>
-            </a>
-            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="<?= base_url('siswa') ?>" class="dropdown-item"><i class="fas fa-address-card"></i>&ensp;Biodata</a></li>
-              <li class="dropdown-divider"></li>
-              <li><a href="<?= base_url('auth/logout_siswa') ?>" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>&ensp;Logout</a></li>
-            </ul>
-          </li>
-        <?php } ?>
-        </li>
+            </li>
+          <?php } else { ?>
+            <li class="nav-item dropdown">
+              <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+                <i class="fas fa-user"></i>&ensp;<?= session()->get('nama_lengkap') ?>
+              </a>
+              <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                <li><a href="<?= base_url('siswa') ?>" class="dropdown-item"><i class="fas fa-address-card"></i>&ensp;Biodata</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="<?= base_url('auth/logout_siswa') ?>" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>&ensp;Logout</a></li>
+              </ul>
+            </li>
+          <?php } ?>
         </ul>
       </div>
     </nav>
@@ -155,14 +165,31 @@ $ta = $db->table('tbl_ta')
       </strong>
     </footer>
   </div>
-  <!-- ./wrapper
-
-  <!-- REQUIRED SCRIPTS -->
+  <!-- ./wrapper  -->
 
   <!-- jQuery -->
   <script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="<?= base_url() ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Select2 -->
+  <script src="<?= base_url() ?>/assets/plugins/select2/js/select2.full.min.js"></script>
+  <!-- Bootstrap4 Duallistbox -->
+  <script src="<?= base_url() ?>/assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+  <!-- InputMask -->
+  <script src="<?= base_url() ?>/assets/plugins/moment/moment.min.js"></script>
+  <script src="<?= base_url() ?>/assets/plugins/inputmask/jquery.inputmask.min.js"></script>
+  <!-- date-range-picker -->
+  <script src="<?= base_url() ?>/assets/plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- bootstrap color picker -->
+  <script src="<?= base_url() ?>/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="<?= base_url() ?>/assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!-- Bootstrap Switch -->
+  <script src="<?= base_url() ?>/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+  <!-- BS-Stepper -->
+  <script src="<?= base_url() ?>/assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+  <!-- dropzonejs -->
+  <script src="<?= base_url() ?>/assets/plugins/dropzone/min/dropzone.min.js"></script>
   <!-- AdminLTE App -->
   <script src="<?= base_url() ?>/assets/dist/js/adminlte.min.js"></script>
 
@@ -184,47 +211,34 @@ $ta = $db->table('tbl_ta')
         }
         reader.readAsDataURL(input.files[0]);
       }
-    }
+    };
 
     $('#preview_gambar').change(function() {
       bacaGambar(this);
     });
   </script>
 
-  <!-- jQuery -->
-  <script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="<?= base_url() ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Select2 -->
-  <script src="<?= base_url() ?>/assets/plugins/select2/js/select2.full.min.js"></script>
-  <!-- InputMask -->
-  <script src="<?= base_url() ?>/assets/plugins/moment/moment.min.js"></script>
-  <script src="<?= base_url() ?>/assets/plugins/inputmask/jquery.inputmask.min.js"></script>
-  <!-- date-range-picker -->
-  <script src="<?= base_url() ?>/assets/plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- Tempusdominus Bootstrap 4 -->
-  <script src="<?= base_url() ?>/assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
   <!-- Page specific script -->
   <script>
     $(function() {
       //Initialize Select2 Elements
-      $('.select2').select2()
+      $('.select2').select2();
 
       //Initialize Select2 Elements
       $('.select2bs4').select2({
         theme: 'bootstrap4'
-      })
+      });
 
       //Datemask dd/mm/yyyy
       $('#datemask').inputmask('dd/mm/yyyy', {
         'placeholder': 'dd/mm/yyyy'
-      })
+      });
       //Datemask2 mm/dd/yyyy
       $('#datemask2').inputmask('mm/dd/yyyy', {
         'placeholder': 'mm/dd/yyyy'
-      })
+      });
       //Money Euro
-      $('[data-mask]').inputmask()
+      $('[data-mask]').inputmask();
 
       //Date picker
       $('#reservationdate').datetimepicker({
@@ -239,7 +253,7 @@ $ta = $db->table('tbl_ta')
       });
 
       //Date range picker
-      $('#reservation').daterangepicker()
+      $('#reservation').daterangepicker();
       //Date range picker with time picker
       $('#reservationtime').daterangepicker({
         timePicker: true,
@@ -247,7 +261,7 @@ $ta = $db->table('tbl_ta')
         locale: {
           format: 'MM/DD/YYYY hh:mm A'
         }
-      })
+      });
       //Date range as a button
       $('#daterange-btn').daterangepicker({
           ranges: {
@@ -264,12 +278,12 @@ $ta = $db->table('tbl_ta')
         function(start, end) {
           $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
         }
-      )
+      );
 
       //Timepicker
       $('#timepicker').datetimepicker({
         format: 'LT'
-      })
+      });
 
     })
   </script>

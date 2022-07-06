@@ -11,6 +11,7 @@ use App\Models\ModelPekerjaan;
 use App\Models\ModelPendidikan;
 use App\Models\ModelPenghasilan;
 use App\Models\ModelWilayah;
+use App\Models\ModelLampiran;
 
 class Siswa extends BaseController
 {
@@ -24,6 +25,7 @@ class Siswa extends BaseController
         $this->ModelPendidikan = new ModelPendidikan();
         $this->ModelPenghasilan = new ModelPenghasilan();
         $this->ModelWilayah = new ModelWilayah();
+        $this->ModelLampiran = new ModelLampiran();
         helper('form');
     }
 
@@ -40,6 +42,8 @@ class Siswa extends BaseController
             'pendidikan' => $this->ModelPendidikan->findAll(),
             'penghasilan' => $this->ModelPenghasilan->findAll(),
             'provinsi' => $this->ModelWilayah->getProvinsi(),
+            'berkas' => $this->ModelSiswa->lampiran(),
+            'lampiran' => $this->ModelLampiran->findAll(),
             'validation' => \Config\Services::validation(),
         ];
         return view('siswa/view_formulir', $data);
@@ -152,6 +156,23 @@ class Siswa extends BaseController
         return redirect()->to('siswa');
     }
 
+    public function updateDataWali($id_siswa)
+    {
+        $data = [
+            'id_siswa' => $id_siswa,
+            'nama_wali' => $this->request->getPost('nama_wali'),
+            'pekerjaan_wali' => $this->request->getPost('pekerjaan_wali'),
+            'pendidikan_wali' => $this->request->getPost('pendidikan_wali'),
+            'agama_wali' => $this->request->getPost('agama_wali'),
+            'no_telpon_wali' => $this->request->getPost('no_telpon_wali'),
+            'alamat_wali' => $this->request->getPost('alamat_wali'),
+        ];
+
+        $this->ModelSiswa->update($id_siswa, $data);
+        session()->setFlashdata('pesan', 'Data Wali berhasil diedit..!!');
+        return redirect()->to('siswa');
+    }
+
     public function updateDataAlamat($id_siswa)
     {
         $data = [
@@ -165,5 +186,97 @@ class Siswa extends BaseController
         $this->ModelSiswa->update($id_siswa, $data);
         session()->setFlashdata('pesan', 'Data alamat berhasil diedit..!!');
         return redirect()->to('siswa');
+    }
+
+    public function updateDataAlamatOrtu($id_siswa)
+    {
+        $data = [
+            'id_siswa' => $id_siswa,
+            'alamat_ortu' => $this->request->getPost('alamat_ortu'),
+        ];
+
+        $this->ModelSiswa->update($id_siswa, $data);
+        session()->setFlashdata('pesan', 'Data alamat Orang Tua berhasil diedit..!!');
+        return redirect()->to('siswa');
+    }
+
+    public function updateSekolahAsal($id_siswa)
+    {
+        $data = [
+            'id_siswa' => $id_siswa,
+            'nama_sekolah_asal' => $this->request->getPost('nama_sekolah_asal'),
+            'tahun_lulus' => $this->request->getPost('tahun_lulus'),
+            'no_ijazah' => $this->request->getPost('no_ijazah'),
+            'no_skhun' => $this->request->getPost('no_skhun'),
+        ];
+
+        $this->ModelSiswa->update($id_siswa, $data);
+        session()->setFlashdata('pesan', 'Data sekolah asal berhasil diedit..!!');
+        return redirect()->to('siswa');
+    }
+
+    public function addBerkas($id_siswa)
+    {
+        if ($this->validate([
+            'id_lampiran' => [
+                'label' => 'Lampiran',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} belum dipilih..!!',
+                ]
+            ],
+            'berkas' => [
+                'label' => 'Berkas',
+                'rules' => 'max_size[berkas,5120]|ext_in[berkas,pdf]',
+                'errors' => [
+                    'max_size' => 'Ukuran {field} max 1 Mb..!!',
+                    'ext_in' => '{field} harus PDF..!!'
+                ]
+            ]
+        ])) {
+            $berkas = $this->request->getFile('berkas');
+            $nama_file = $berkas->getRandomName();
+
+            $data = [
+                'id_siswa' => $id_siswa,
+                'id_lampiran' => $this->request->getPost('id_lampiran'),
+                'ket' => $this->request->getPost('ket'),
+                'berkas' => $nama_file,
+            ];
+
+            // Upload file foto
+            $berkas->move('berkas/', $nama_file);
+            $this->ModelSiswa->addBerkas($data);
+            session()->setFlashdata('pesan', 'Berkas berhasil diupload..!!');
+            return redirect()->to('siswa');
+        } else {
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to(base_url('siswa'));
+        }
+    }
+
+    public function deleteBerkas($id_berkas)
+    {
+        $berkas = $this->ModelSiswa->detailBerkas($id_berkas);
+        if ($berkas['berkas'] != null) {
+            unlink('./berkas/' . $berkas['berkas']);
+        }
+        $data = [
+            'id_berkas' => $id_berkas,
+        ];
+        $this->ModelSiswa->deleteBerkas($data);
+        session()->setFlashdata('pesan', 'Berkas berhasil dihapus..!!');
+        return redirect()->to(base_url('siswa'));
+    }
+
+    public function apply($id_siswa)
+    {
+        $data = [
+            'id_siswa' => $id_siswa,
+            'stat_pendaftaran' => '1',
+        ];
+        $this->ModelSiswa->update($id_siswa, $data);
+        session()->setFlashdata('pesan', 'Pendaftaran berhasil di kirim..!!');
+        return redirect()->to(base_url('siswa'));
     }
 }
