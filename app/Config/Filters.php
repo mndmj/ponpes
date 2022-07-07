@@ -78,6 +78,7 @@ class Filters extends BaseConfig
                     'lampiran', 'lampiran/*',
                     'statusdikeluarga', 'statusdikeluarga/*',
                     'wilayah', 'wilayah/*',
+                    'ppdb', 'ppdb/*',
                 ]
             ],
             'filtersiswa' => [

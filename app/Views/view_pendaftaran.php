@@ -117,6 +117,21 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Jurusan</label>
+                            <label class="text-danger">(Pilih jika ada)</label>
+                            <small class="text-danger">
+                                <b><?= $validation->hasError('jk') ? $validation->getError('jk') : '' ?></b>
+                            </small>
+                            <select name="id_jurusan" class="form-control">
+                                <option value="0">--Tidak Ada--</option>
+                                <?php foreach ($jurusan as $key => $value) { ?>
+                                    <option value="<?= $value['id_jurusan'] ?>"><?= $value['jurusan'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
                         <button type="submit" class="btn btn-primary btn-block">Submit</button>
                     </div>
                 </div>

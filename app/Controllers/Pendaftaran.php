@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ModelTa;
 use App\Models\ModelSiswa;
+use App\Models\ModelJurusan;
 
 class Pendaftaran extends BaseController
 {
@@ -13,6 +14,7 @@ class Pendaftaran extends BaseController
         helper('form');
         $this->ModelTa = new ModelTa();
         $this->ModelSiswa = new ModelSiswa();
+        $this->ModelJurusan = new ModelJurusan();
     }
 
     public function index()
@@ -21,6 +23,7 @@ class Pendaftaran extends BaseController
             'title' => 'PPDB',
             'subtitle' => 'Pendaftaran',
             'ta' => $this->ModelTa->statusTa(),
+            'jurusan' => $this->ModelJurusan->findAll(),
             'validation' => \Config\Services::validation(),
         ];
         return view('view_pendaftaran', $data);
@@ -87,6 +90,7 @@ class Pendaftaran extends BaseController
             $data = [
                 'no_pendaftaran' => $no_pendaftaran,
                 'tgl_pendaftaran' => date('Y-m-d'),
+                'id_jurusan' => $this->request->getPost('id_jurusan'),
                 'nisn' => $this->request->getPost('nisn'),
                 'nama_lengkap' => $this->request->getPost('nama_lengkap'),
                 'jk' => $this->request->getPost('jk'),

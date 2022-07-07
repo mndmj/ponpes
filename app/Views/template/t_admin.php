@@ -169,6 +169,36 @@ $setting = $db->table('tbl_setting')
             </li>
 
             <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-file-signature"></i>
+                <p>
+                  Pendaftaran
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview rounded bg-secondary">
+                <li class="nav-item">
+                  <a href="<?= base_url('ppdb') ?>" class="nav-link">
+                    <i class="nav-icon fas fa-folder-open"></i>
+                    <p>Masuk</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('') ?>" class="nav-link">
+                    <i class="nav-icon fa fa-user-check"></i>
+                    <p>Diterima</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('') ?>" class="nav-link">
+                    <i class="nav-icon fa fa-user-slash"></i>
+                    <p>Ditolak</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
               <a href="<?= base_url('user') ?>" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>User</p>

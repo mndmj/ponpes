@@ -12,6 +12,7 @@ use App\Models\ModelPendidikan;
 use App\Models\ModelPenghasilan;
 use App\Models\ModelWilayah;
 use App\Models\ModelLampiran;
+use App\Models\ModelJurusan;
 
 class Siswa extends BaseController
 {
@@ -26,6 +27,7 @@ class Siswa extends BaseController
         $this->ModelPenghasilan = new ModelPenghasilan();
         $this->ModelWilayah = new ModelWilayah();
         $this->ModelLampiran = new ModelLampiran();
+        $this->ModelJurusan = new ModelJurusan();
         helper('form');
     }
 
@@ -44,6 +46,7 @@ class Siswa extends BaseController
             'provinsi' => $this->ModelWilayah->getProvinsi(),
             'berkas' => $this->ModelSiswa->lampiran(),
             'lampiran' => $this->ModelLampiran->findAll(),
+            'jurusan' => $this->ModelJurusan->findAll(),
             'validation' => \Config\Services::validation(),
         ];
         return view('siswa/view_formulir', $data);
@@ -54,6 +57,7 @@ class Siswa extends BaseController
         $data = [
             'id_siswa' => $id_siswa,
             'id_jalur_masuk' => $this->request->getPost('id_jalur_masuk'),
+            'id_jurusan' => $this->request->getPost('id_jurusan'),
         ];
 
         $this->ModelSiswa->update($id_siswa, $data);

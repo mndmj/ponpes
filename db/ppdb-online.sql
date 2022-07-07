@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Jul 2022 pada 22.15
+-- Waktu pembuatan: 07 Jul 2022 pada 21.48
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -68,6 +68,27 @@ INSERT INTO `tbl_baner` (`id_baner`, `ket`, `baner`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tbl_berkas`
+--
+
+CREATE TABLE `tbl_berkas` (
+  `id_berkas` int(11) NOT NULL,
+  `id_siswa` int(11) DEFAULT NULL,
+  `id_lampiran` int(2) DEFAULT NULL,
+  `ket` varchar(255) DEFAULT NULL,
+  `berkas` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_berkas`
+--
+
+INSERT INTO `tbl_berkas` (`id_berkas`, `id_siswa`, `id_lampiran`, `ket`, `berkas`) VALUES
+(3, 1, 2, 'Ijazah', 'ijazah.pdf');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tbl_jalur_masuk`
 --
 
@@ -103,9 +124,9 @@ CREATE TABLE `tbl_jurusan` (
 --
 
 INSERT INTO `tbl_jurusan` (`id_jurusan`, `jurusan`) VALUES
-(1, 'Tidak Ada'),
-(2, 'MTs IPA'),
-(3, 'MTs IPS');
+(1, 'MTs'),
+(2, 'MA IPA'),
+(3, 'MA IPS');
 
 -- --------------------------------------------------------
 
@@ -7897,6 +7918,7 @@ CREATE TABLE `tbl_siswa` (
   `id_siswa` int(11) NOT NULL,
   `no_pendaftaran` varchar(12) DEFAULT NULL,
   `tgl_pendaftaran` date DEFAULT NULL,
+  `id_jurusan` int(2) DEFAULT 0,
   `nisn` varchar(10) DEFAULT NULL,
   `nama_lengkap` varchar(255) DEFAULT NULL,
   `jk` varchar(1) DEFAULT NULL,
@@ -7926,19 +7948,33 @@ CREATE TABLE `tbl_siswa` (
   `agama_ibu` varchar(255) DEFAULT NULL,
   `umur_ibu` int(2) DEFAULT NULL,
   `no_telpon_ibu` varchar(15) DEFAULT NULL,
+  `alamat_ortu` varchar(255) DEFAULT NULL,
+  `nama_wali` varchar(255) DEFAULT NULL,
+  `pekerjaan_wali` varchar(255) DEFAULT NULL,
+  `pendidikan_wali` varchar(255) DEFAULT NULL,
+  `agama_wali` varchar(255) DEFAULT NULL,
+  `no_telpon_wali` varchar(15) DEFAULT NULL,
+  `alamat_wali` varchar(255) DEFAULT NULL,
   `id_provinsi` int(2) DEFAULT NULL,
   `id_kabupaten` int(3) DEFAULT NULL,
   `id_kecamatan` int(4) DEFAULT NULL,
-  `alamat` varchar(255) DEFAULT NULL
+  `alamat` varchar(255) DEFAULT NULL,
+  `nama_sekolah_asal` varchar(255) DEFAULT NULL,
+  `tahun_lulus` year(4) DEFAULT NULL,
+  `no_ijazah` varchar(255) DEFAULT NULL,
+  `no_skhun` varchar(255) DEFAULT NULL,
+  `stat_pendaftaran` int(1) DEFAULT 0,
+  `stat_ppdb` int(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_siswa`
 --
 
-INSERT INTO `tbl_siswa` (`id_siswa`, `no_pendaftaran`, `tgl_pendaftaran`, `nisn`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `password`, `id_jalur_masuk`, `foto`, `nik`, `id_agama`, `id_status`, `jml_saudara`, `no_telpon`, `nik_ayah`, `nama_ayah`, `pendidikan_ayah`, `pekerjaan_ayah`, `penghasilan_ayah`, `agama_ayah`, `umur_ayah`, `no_telpon_ayah`, `nik_ibu`, `nama_ibu`, `pekerjaan_ibu`, `pendidikan_ibu`, `penghasilan_ibu`, `agama_ibu`, `umur_ibu`, `no_telpon_ibu`, `id_provinsi`, `id_kabupaten`, `id_kecamatan`, `alamat`) VALUES
-(1, '202206230001', '2022-06-23', '1234567890', 'Muhammad Nasrullah', 'L', 'Makassar', '2002-03-25', '032002', 2, '1656875575_390665a80abb336fc661.jpg', '3313112503020003', 1, 1, 3, '08979086055', '331311426509001', 'Paijo', 'S1', 'TNI/POLRI', '> Rp.4.000.000', 'Islam', 50, '098786465322', '3313113102290002', 'Sainem', 'Tidak bekerja', 'SMA/Setara', 'Rp.0 s/d Rp.500.000', 'Islam', 45, '081225345098', 33, 3313, 3313150, 'Gambarwi 3/6, Sewurejo'),
-(3, '202206240001', '2022-06-24', '1234567891', 'Adella Nawang', 'P', 'Klaten', '2006-09-17', '092006', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tbl_siswa` (`id_siswa`, `no_pendaftaran`, `tgl_pendaftaran`, `id_jurusan`, `nisn`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `password`, `id_jalur_masuk`, `foto`, `nik`, `id_agama`, `id_status`, `jml_saudara`, `no_telpon`, `nik_ayah`, `nama_ayah`, `pendidikan_ayah`, `pekerjaan_ayah`, `penghasilan_ayah`, `agama_ayah`, `umur_ayah`, `no_telpon_ayah`, `nik_ibu`, `nama_ibu`, `pekerjaan_ibu`, `pendidikan_ibu`, `penghasilan_ibu`, `agama_ibu`, `umur_ibu`, `no_telpon_ibu`, `alamat_ortu`, `nama_wali`, `pekerjaan_wali`, `pendidikan_wali`, `agama_wali`, `no_telpon_wali`, `alamat_wali`, `id_provinsi`, `id_kabupaten`, `id_kecamatan`, `alamat`, `nama_sekolah_asal`, `tahun_lulus`, `no_ijazah`, `no_skhun`, `stat_pendaftaran`, `stat_ppdb`) VALUES
+(1, '202206230001', '2022-06-23', 1, '1234567890', 'Muhammad Nasrullah', 'L', 'Makassar', '2002-03-25', '032002', 2, '1656875575_390665a80abb336fc661.jpg', '3313112503020003', 1, 1, 3, '08979086055', '331311426509001', 'Paijo', 'S1', 'TNI/POLRI', '> Rp.4.000.000', 'Islam', 50, '098786465322', '3313113102290002', 'Sainem', 'Tidak bekerja', 'SMA/Setara', 'Rp.0 s/d Rp.500.000', 'Islam', 45, '081225345098', 'Gambaruwi 3/6, Sewurejo, Mojogedang, Karanganyar', 'Sumini', 'Buruh', 'SD/Setara', 'Islam', '098970796875', 'Gambaruwi 3/6, Sewurejo, Mojogedang, Karanganyar', 33, 3313, 3313150, 'Gambarwi 3/6, Sewurejo', 'SMP N 2 Mojogedang', 2016, '222222222', '112121211', 1, 0),
+(3, '202206240001', '2022-06-24', 0, '1234567891', 'Adella Nawang', 'P', 'Klaten', '2006-09-17', '092006', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(4, '202207070001', '2022-07-07', 2, '1111111111', 'Wirya Aditama', 'L', 'Solo', '2001-02-28', '022001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -8018,6 +8054,12 @@ ALTER TABLE `tbl_agama`
 --
 ALTER TABLE `tbl_baner`
   ADD PRIMARY KEY (`id_baner`);
+
+--
+-- Indeks untuk tabel `tbl_berkas`
+--
+ALTER TABLE `tbl_berkas`
+  ADD PRIMARY KEY (`id_berkas`);
 
 --
 -- Indeks untuk tabel `tbl_jalur_masuk`
@@ -8122,6 +8164,12 @@ ALTER TABLE `tbl_baner`
   MODIFY `id_baner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT untuk tabel `tbl_berkas`
+--
+ALTER TABLE `tbl_berkas`
+  MODIFY `id_berkas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT untuk tabel `tbl_jalur_masuk`
 --
 ALTER TABLE `tbl_jalur_masuk`
@@ -8131,7 +8179,7 @@ ALTER TABLE `tbl_jalur_masuk`
 -- AUTO_INCREMENT untuk tabel `tbl_jurusan`
 --
 ALTER TABLE `tbl_jurusan`
-  MODIFY `id_jurusan` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_jurusan` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_lampiran`
@@ -8167,7 +8215,7 @@ ALTER TABLE `tbl_setting`
 -- AUTO_INCREMENT untuk tabel `tbl_siswa`
 --
 ALTER TABLE `tbl_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_status_keluarga`

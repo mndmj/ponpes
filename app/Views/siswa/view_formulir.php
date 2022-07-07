@@ -59,18 +59,22 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <strong>No.Pendaftaran</strong>
                                     <p class="text-muted"><?= $siswa['no_pendaftaran'] ?></p>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <strong>Tanggal Pendaftaran</strong>
                                     <p class="text-muted"><?= $siswa['tgl_pendaftaran'] ?></p>
                                     </p>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <strong>Jalur Masuk</strong>
                                     <?= ($siswa['jalur_masuk'] == null) ? '<p class="text-danger">Kosong</p>' : '<p class="text-muted">' . $siswa['jalur_masuk'] . '</p>' ?>
+                                </div>
+                                <div class="col-sm-3">
+                                    <strong>Jurusan</strong>
+                                    <?= ($siswa['id_jurusan'] == null) ? '<p class="text-muted">Tidak Ada</p>' : '<p class="text-muted">' . $siswa['jurusan'] . '</p>' ?>
                                 </div>
                             </div>
                         </div>
@@ -525,6 +529,21 @@
                         <?php foreach ($jalur as $key => $value) { ?>
                             <option value="<?= $value['id_jalur_masuk'] ?>" <?= $siswa['id_jalur_masuk'] == $value['id_jalur_masuk'] ? 'selected' : '' ?>>
                                 <?= $value['jalur_masuk'] ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Jurusan</label>
+                    <label class="text-danger">(Pilih jika ada)</label>
+                    <small class="text-danger">
+                        <b><?= $validation->hasError('jk') ? $validation->getError('jk') : '' ?></b>
+                    </small>
+                    <select name="id_jurusan" class="form-control">
+                        <option value="0">--Tidak Ada--</option>
+                        <?php foreach ($jurusan as $key => $value) { ?>
+                            <option value="<?= $value['id_jurusan'] ?>" <?= $siswa['id_jurusan'] == $value['id_jurusan'] ? 'selected' : '' ?>>
+                                <?= $value['jurusan'] ?>
                             </option>
                         <?php } ?>
                     </select>
