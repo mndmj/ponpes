@@ -82,6 +82,7 @@ class Pendaftaran extends BaseController
             ],
         ])) {
             //jika tidak ada validasi maka simpan data
+            $ta = $this->ModelTa->statusTa();
             $tahun = $this->request->getPost('tahun');
             $bulan = $this->request->getPost('bulan');
             $tanggal = $this->request->getPost('tanggal');
@@ -90,6 +91,7 @@ class Pendaftaran extends BaseController
             $data = [
                 'no_pendaftaran' => $no_pendaftaran,
                 'tgl_pendaftaran' => date('Y-m-d'),
+                'tahun' => $ta['tahun'],
                 'id_jurusan' => $this->request->getPost('id_jurusan'),
                 'nisn' => $this->request->getPost('nisn'),
                 'nama_lengkap' => $this->request->getPost('nama_lengkap'),

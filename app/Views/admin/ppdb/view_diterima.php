@@ -6,25 +6,8 @@
         <div class="card-header">
             <h3 class="card-title">Data <?= $subtitle ?></h3>
         </div>
-        <div class="card-body p-0">
-            <?php
-            if (session()->getFlashdata('terima')) {
-                echo '<div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h6><i class="icon fas fa-check"></i>';
-                echo session()->getFlashdata('terima');
-                echo '</h6></div>';
-            }
-
-            if (session()->getFlashdata('tolak')) {
-                echo '<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h6><i class="icon fas fa-times"></i>';
-                echo session()->getFlashdata('tolak');
-                echo '</h6></div>';
-            }
-            ?>
-            <table class="table table-striped projects">
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped projects">
                 <thead>
                     <tr>
                         <th width="70px">#</th>
@@ -50,8 +33,6 @@
                             <td><label class="badge badge-warning"><?= $value['jalur_masuk'] ?></label></td>
                             <td class="text-center">
                                 <a href="<?= base_url('ppdb/detailData/' . $value['id_siswa']) ?>" class="btn btn-xs btn-info btn-block"><i class="fas fa-eye"></i>&ensp;Detail</a>
-                                <a href="<?= base_url('ppdb/diterima/' . $value['id_siswa']) ?>" class="btn btn-xs btn-success btn-block"><i class="fas fa-check"></i>&ensp;Terima</a>
-                                <a href="<?= base_url('ppdb/ditolak/' . $value['id_siswa']) ?>" class="btn btn-xs btn-danger btn-block"><i class="fas fa-times"></i>&ensp;Tolak</a>
                             </td>
                         </tr>
                     <?php } ?>

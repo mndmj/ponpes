@@ -14,14 +14,14 @@ class ModelSiswa extends Model
     protected $returnType     = 'array';
 
     protected $allowedFields = [
-        'id_siswa', 'no_pendaftaran', 'tgl_pendaftaran', 'id_jurusan',
+        'id_siswa', 'no_pendaftaran', 'tgl_pendaftaran', 'tahun', 'id_jurusan',
         'nisn', 'nama_lengkap', 'jk', 'tempat_lahir', 'tgl_lahir', 'password', 'id_jalur_masuk', 'foto', 'nik', 'id_agama', 'id_status', 'jml_saudara', 'no_telpon',
         'nik_ayah', 'nama_ayah', 'pendidikan_ayah', 'penghasilan_ayah', 'pekerjaan_ayah', 'agama_ayah', 'umur_ayah', 'no_telpon_ayah',
         'nik_ibu', 'nama_ibu', 'pendidikan_ibu', 'penghasilan_ibu', 'pekerjaan_ibu', 'agama_ibu', 'umur_ibu', 'no_telpon_ibu',
         'nama_wali', 'pekerjaan_wali', 'pendidikan_wali', 'agama_wali', 'no_telpon_wali', 'alamat_wali', 'alamat_ortu',
         'id_provinsi', 'id_kabupaten', 'id_kecamatan', 'alamat',
         'nama_sekolah_asal', 'tahun_lulus', 'no_ijazah', 'no_skhun',
-        'stat_pendaftaran',
+        'stat_pendaftaran', 'stat_ppdb',
     ];
 
     public function getBiodataSiswa()
