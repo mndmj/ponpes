@@ -4,12 +4,16 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ModelPpdb;
+use App\Models\ModelTa;
+use App\Models\ModelAdmin;
 
 class Ppdb extends BaseController
 {
     public function __construct()
     {
         $this->ModelPpdb = new ModelPpdb();
+        $this->ModelTa = new ModelTa();
+        $this->ModelAdmin = new ModelAdmin();
     }
 
     public function index()
@@ -73,5 +77,27 @@ class Ppdb extends BaseController
         $this->ModelPpdb->update($id_siswa, $data);
         session()->setFlashdata('tolak', 'Siswa telah ditolak.');
         return redirect()->to(base_url('ppdb'));
+    }
+
+    public function laporan()
+    {
+        $data = [
+            'title' => 'PPDB',
+            'subtitle' => 'Laporan Kelulusan',
+            'ta' => $this->ModelTa->findAll(),
+        ];
+        return view('admin/ppdb/view_laporan', $data);
+    }
+
+    public function cetakLaporan($tahun)
+    {
+        $data = [
+            'title' => 'PPDB',
+            'subtitle' => 'Laporan Kelulusan',
+            'tahun' => $tahun,
+            'siswa' => $this->ModelPpdb->getDataLaporan($tahun),
+            'setting' => $this->ModelAdmin->detailSetting(),
+        ];
+        return view('admin/ppdb/view_cetak_laporan', $data);
     }
 }

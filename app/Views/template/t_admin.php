@@ -203,6 +203,13 @@ $setting = $db->table('tbl_setting')
             </li>
 
             <li class="nav-item">
+              <a href="<?= base_url('ppdb/laporan') ?>" class="nav-link">
+                <i class="nav-icon fas fa-file-alt"></i>
+                <p>Laporan</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="<?= base_url('user') ?>" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>User</p>
