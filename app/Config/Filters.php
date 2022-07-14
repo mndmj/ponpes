@@ -43,6 +43,7 @@ class Filters extends BaseConfig
                     'ppdb', 'ppdb/*',
                     'pendaftaran', 'pendaftaran/*',
                     'wilayah', 'wilayah/*',
+                    'pembayaran', 'pembayaran/*',
                 ]
             ],
             'filtersiswa' => [
@@ -79,6 +80,7 @@ class Filters extends BaseConfig
                     'statusdikeluarga', 'statusdikeluarga/*',
                     'wilayah', 'wilayah/*',
                     'ppdb', 'ppdb/*',
+                    'pembayaran', 'pembayaran/*',
                 ]
             ],
             'filtersiswa' => [
@@ -90,6 +92,7 @@ class Filters extends BaseConfig
                     'siswa', 'siswa/*',
                     'pendaftaran', 'pendaftaran/*',
                     'wilayah', 'wilayah/*',
+                    'pembayaran', 'pembayaran/*',
                 ]
             ],
             'toolbar',

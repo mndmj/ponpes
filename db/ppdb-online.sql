@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jul 2022 pada 22.44
+-- Waktu pembuatan: 14 Jul 2022 pada 20.31
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -7973,10 +7973,12 @@ CREATE TABLE `tbl_siswa` (
 --
 
 INSERT INTO `tbl_siswa` (`id_siswa`, `no_pendaftaran`, `tgl_pendaftaran`, `tahun`, `id_jurusan`, `nisn`, `nama_lengkap`, `jk`, `tempat_lahir`, `tgl_lahir`, `password`, `id_jalur_masuk`, `foto`, `nik`, `id_agama`, `id_status`, `jml_saudara`, `no_telpon`, `nik_ayah`, `nama_ayah`, `pendidikan_ayah`, `pekerjaan_ayah`, `penghasilan_ayah`, `agama_ayah`, `umur_ayah`, `no_telpon_ayah`, `nik_ibu`, `nama_ibu`, `pekerjaan_ibu`, `pendidikan_ibu`, `penghasilan_ibu`, `agama_ibu`, `umur_ibu`, `no_telpon_ibu`, `alamat_ortu`, `nama_wali`, `pekerjaan_wali`, `pendidikan_wali`, `agama_wali`, `no_telpon_wali`, `alamat_wali`, `id_provinsi`, `id_kabupaten`, `id_kecamatan`, `alamat`, `nama_sekolah_asal`, `tahun_lulus`, `no_ijazah`, `no_skhun`, `stat_pendaftaran`, `stat_ppdb`) VALUES
-(1, '202206230001', '2022-06-23', 2022, 1, '1234567890', 'Muhammad Nasrullah', 'L', 'Makassar', '2002-03-25', '032002', 2, '1656875575_390665a80abb336fc661.jpg', '3313112503020003', 1, 1, 3, '08979086055', '331311426509001', 'Paijo', 'S1', 'TNI/POLRI', '> Rp.4.000.000', 'Islam', 50, '098786465322', '3313113102290002', 'Sainem', 'Tidak bekerja', 'SMA/Setara', 'Rp.0 s/d Rp.500.000', 'Islam', 45, '081225345098', 'Gambaruwi 3/6, Sewurejo, Mojogedang, Karanganyar', 'Sumini', 'Buruh', 'SD/Setara', 'Islam', '098970796875', 'Gambaruwi 3/6, Sewurejo, Mojogedang, Karanganyar', 33, 3313, 3313150, 'Gambarwi 3/6, Sewurejo', 'SMP N 2 Mojogedang', 2016, '222222222', '112121211', 1, 2),
-(2, '202206240001', '2022-06-24', 2022, 0, '1234567891', 'Adella Nawang', 'P', 'Klaten', '2006-09-17', '092006', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(1, '202206230001', '2022-06-23', 2022, 1, '1234567890', 'Muhammad Nasrullah', 'L', 'Makassar', '2002-03-25', '032002', 2, '1656875575_390665a80abb336fc661.jpg', '3313112503020003', 1, 1, 3, '08979086055', '331311426509001', 'Paijo', 'S1', 'TNI/POLRI', '> Rp.4.000.000', 'Islam', 50, '098786465322', '3313113102290002', 'Sainem', 'Tidak bekerja', 'SMA/Setara', 'Rp.0 s/d Rp.500.000', 'Islam', 45, '081225345098', 'Gambaruwi 3/6, Sewurejo, Mojogedang, Karanganyar', 'Sumini', 'Buruh', 'SD/Setara', 'Islam', '098970796875', 'Gambaruwi 3/6, Sewurejo, Mojogedang, Karanganyar', 33, 3313, 3313150, 'Gambarwi 3/6, Sewurejo', 'SMP N 2 Mojogedang', 2016, '222222222', '112121211', 1, 1),
+(2, '202206240001', '2022-06-24', 2022, 0, '1234567891', 'Adella Nawang', 'P', 'Klaten', '2001-10-20', '092006', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1),
 (3, '202207070001', '2022-07-07', 2022, 2, '1111111111', 'Wirya Aditama', 'L', 'Solo', '2001-02-28', '022001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 2),
-(4, '202207080001', '2022-07-08', 2022, 3, '2121212121', 'Aku banget', 'P', 'Solo', '2008-08-16', '082008', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
+(4, '202207080001', '2022-07-08', 2022, 3, '2121212121', 'Aku banget', 'P', 'Solo', '2008-08-16', '082008', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(56, '202207140001', '2022-07-14', 2022, 1, '1122334455', 'Yudi Wiryodikromo', 'L', 'Solo', '2000-10-15', '102000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 2),
+(57, '202207140002', '2022-07-14', 2022, 2, '2345678901', 'Huariits', 'P', 'Semarang', '2000-08-17', '082000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -8038,8 +8040,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id_user`, `nama_user`, `email`, `password`, `foto`) VALUES
-(1, 'Administrator', 'admin@gmail.com', '1234', '1650941385_55692b206507e8ae8f84.jpg'),
-(2, 'a', 'a@gmail.com', '1234', '1650941399_1eef8ef5256ac84a5e17.jpg');
+(1, 'Administrator', 'admin@gmail.com', '1234', '1650941385_55692b206507e8ae8f84.jpg');
 
 --
 -- Indexes for dumped tables
@@ -8217,7 +8218,7 @@ ALTER TABLE `tbl_setting`
 -- AUTO_INCREMENT untuk tabel `tbl_siswa`
 --
 ALTER TABLE `tbl_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_status_keluarga`

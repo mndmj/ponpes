@@ -11,6 +11,10 @@ $ta = $db->table('tbl_ta')
   ->where('status', '1')
   ->get()
   ->getRowArray();
+
+$siswa = $db->table('tbl_siswa')
+  ->get()
+  ->getRowArray();
 ?>
 
 <!DOCTYPE html>
@@ -60,18 +64,6 @@ $ta = $db->table('tbl_ta')
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- SEARCH FORM -->
-        <!-- <form class="form-inline ml-0 ml-md-3">
-          <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-navbar" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </form> -->
-
         <div class="collapse navbar-collapse order-3" id="navbarCollapse">
           <!-- Left navbar links -->
           <ul class="navbar-nav">
@@ -79,16 +71,18 @@ $ta = $db->table('tbl_ta')
               <a href="<?= base_url('') ?>" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url('/pendaftaran') ?>" class="nav-link">Pendaftaran</a>
+              <a href="<?= base_url('pendaftaran') ?>" class="nav-link">Pendaftaran</a>
             </li>
+            <?php if (session('nisn')) { ?>
+              <!-- <li class="nav-item">
+                <a href="<?= base_url('pembayaran') ?>" class="nav-link">Pembayaran</a>
+              </li> -->
+              <li class="nav-item">
+                <a href="<?= base_url('siswa') ?>" class="nav-link">Pengumuman</a>
+              </li>
+            <?php } ?>
             <li class="nav-item">
-              <a href="<?= base_url() ?>" class="nav-link">Petunjuk</a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= base_url() ?>" class="nav-link">Pengumuman</a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= base_url() ?>" class="nav-link">About</a>
+              <a href="https://pesantrenaliman.or.id/" class="nav-link">About</a>
             </li>
           </ul>
         </div>
@@ -125,7 +119,7 @@ $ta = $db->table('tbl_ta')
           <div class="row mb-2">
             <div class="col-sm-6">
               <?php if (isset($ta['status']) <> 1) { ?>
-                <h4 class="mb-0 text-danger text-bold">Pendaftaran Belum dibuka kembali !!</h4>
+                <h4 class="mb-0 text-danger text-bold">Pendaftaran sudah di tutup !!</h4>
               <?php } else { ?>
                 <h4 class="m-0">Pendaftaran Tahun Ajaran <?= $ta['ta'] ?></h4>
               <?php } ?>

@@ -415,18 +415,6 @@
             </div>
         </div>
     </div>
-
-    <div class="col-sm-12 text-center">
-        <?php if ($siswa['stat_pendaftaran'] == 0) { ?>
-            <button class="btn btn-success px-5" data-toggle="modal" data-target="#apply">
-                Apply Data Pendaftaran&ensp;<i class="fas fa-check-circle"></i>
-            </button>
-        <?php } elseif ($siswa['stat_pendaftaran'] == 1) { ?>
-            <button class="btn btn-success px-5" disabled>
-                Apply Data Pendaftaran&ensp;<i class="fas fa-check-circle"></i>
-            </button>
-        <?php } ?>
-    </div>
 </div>
 
 

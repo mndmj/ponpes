@@ -1,5 +1,6 @@
 <?= $this->extend('template/t_user') ?>
 <?= $this->section('content') ?>
+
 <?php if (isset($ta['status']) == 1) { ?>
 
     <div class="col-sm-5">
@@ -119,7 +120,6 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label>Jurusan</label>
-                            <label class="text-danger">(Pilih jika ada)</label>
                             <select name="id_jurusan" class="form-control">
                                 <option value="0">--Tidak Ada--</option>
                                 <?php foreach ($jurusan as $key => $value) { ?>

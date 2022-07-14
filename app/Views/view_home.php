@@ -37,7 +37,7 @@
 <div class="col-sm-4">
   <div class="card card-lightblue">
     <div class="card-header">
-      <h3 class="card-title">Estimasi Pendaftaran</h3>
+      <h3 class="card-title">Estimasi Pendaftaran Tahun <?= date('Y') ?>/<?= date('Y', strtotime('next year')) ?></h3>
     </div>
 
     <div class="card-body">
@@ -47,7 +47,7 @@
 
           <div class="info-box-content">
             <span class="info-box-text">Jumlah Pendaftar</span>
-            <span class="info-box-number">0</span>
+            <span class="info-box-number"><?= $jumlahPendaftar ?></span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -60,7 +60,7 @@
 
           <div class="info-box-content">
             <span class="info-box-text">Laki-laki</span>
-            <span class="info-box-number">0</span>
+            <span class="info-box-number"><?= $jumlahLk ?></span>
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -73,7 +73,7 @@
 
           <div class="info-box-content">
             <span class="info-box-text">Perempuan</span>
-            <span class="info-box-number">0</span>
+            <span class="info-box-number"><?= $jumlahPr ?></span>
           </div>
           <!-- /.info-box-content -->
         </div>

@@ -13,6 +13,8 @@ use App\Models\ModelPenghasilan;
 use App\Models\ModelWilayah;
 use App\Models\ModelLampiran;
 use App\Models\ModelJurusan;
+use App\Models\ModelAdmin;
+use App\Models\ModelTa;
 
 class Siswa extends BaseController
 {
@@ -28,6 +30,8 @@ class Siswa extends BaseController
         $this->ModelWilayah = new ModelWilayah();
         $this->ModelLampiran = new ModelLampiran();
         $this->ModelJurusan = new ModelJurusan();
+        $this->ModelAdmin = new ModelAdmin();
+        $this->ModelTa = new ModelTa();
         helper('form');
     }
 
@@ -47,6 +51,7 @@ class Siswa extends BaseController
             'berkas' => $this->ModelSiswa->lampiran(),
             'lampiran' => $this->ModelLampiran->findAll(),
             'jurusan' => $this->ModelJurusan->findAll(),
+            'ta' => $this->ModelTa->statusTa(),
             'validation' => \Config\Services::validation(),
         ];
         return view('siswa/view_formulir', $data);
@@ -74,8 +79,8 @@ class Siswa extends BaseController
                 'rules' => 'max_size[foto,1024]',
                 'errors' => [
                     'max_size' => 'Ukuran {field} max 1 Mb..!!',
-                ]
-            ]
+                ],
+            ],
         ])) {
             // hapus foto lama
             $siswa = $this->ModelSiswa->find($id_siswa);
@@ -282,5 +287,16 @@ class Siswa extends BaseController
         $this->ModelSiswa->update($id_siswa, $data);
         session()->setFlashdata('pesan', 'Pendaftaran berhasil di kirim..!!');
         return redirect()->to(base_url('siswa'));
+    }
+
+    public function buktiLulus()
+    {
+        $data = [
+            'title' => 'PPDB',
+            'subtitle' => 'Bukti Lulus',
+            'siswa' => $this->ModelSiswa->getBiodataSiswa(),
+            'setting' => $this->ModelAdmin->detailSetting(),
+        ];
+        return view('siswa/view_bukti_lulus', $data);
     }
 }

@@ -17,7 +17,16 @@ class Admin extends BaseController
     {
         $data = [
             'title' => 'PPDB',
-            'subtitle' => 'Admin'
+            'subtitle' => 'Dashboard',
+            'totjurusan' => $this->ModelAdmin->totalJurusan(),
+            'totpekerjaan' => $this->ModelAdmin->totalPekerjaan(),
+            'totpendidikan' => $this->ModelAdmin->totalPendidikan(),
+            'totagama' => $this->ModelAdmin->totalAgama(),
+            'totpenghasilan' => $this->ModelAdmin->totalPenghasilan(),
+            'totuser' => $this->ModelAdmin->totalUser(),
+            'totpendaftaranmasuk' => $this->ModelAdmin->totalPendaftaranMasuk(),
+            'totpendaftaranditerima' => $this->ModelAdmin->totalPendaftaranDiterima(),
+            'totpendaftaranditolak' => $this->ModelAdmin->totalPendaftaranDitolak(),
         ];
         return view('admin/view_admin', $data);
     }
