@@ -22,6 +22,7 @@ class ModelSiswa extends Model
         'id_provinsi', 'id_kabupaten', 'id_kecamatan', 'alamat',
         'nama_sekolah_asal', 'tahun_lulus', 'no_ijazah', 'no_skhun',
         'stat_pendaftaran', 'stat_ppdb',
+        'email', 'token', 'status_validasi',
     ];
 
     public function getBiodataSiswa()

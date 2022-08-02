@@ -101,7 +101,7 @@ $siswa = $db->table('tbl_siswa')
                 <i class="fas fa-user"></i>&ensp;<?= session()->get('nama_lengkap') ?>
               </a>
               <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                <li><a href="<?= base_url('siswa') ?>" class="dropdown-item"><i class="fas fa-address-card"></i>&ensp;Biodata</a></li>
+                <li><a href="<?= base_url('siswa') ?>" class="dropdown-item"><i class="fas fa-address-card"></i>&ensp;Formulir</a></li>
                 <li class="dropdown-divider"></li>
                 <li><a href="<?= base_url('auth/logout_siswa') ?>" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>&ensp;Logout</a></li>
               </ul>

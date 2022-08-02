@@ -88,7 +88,7 @@
                             <div class="row">
                                 <div class="col-sm-6"></div>
                                 <div class="col-sm-2">
-                                    <img class="img-fluid pad" src="<?= base_url('foto/' . $siswa['foto']) ?>">
+                                    <!-- <img class="img-fluid pad" src="<?= base_url('foto/' . $siswa['foto']) ?>"> -->
                                 </div>
                                 <div class="col-sm-4">
                                     <table>

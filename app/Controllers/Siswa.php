@@ -118,7 +118,7 @@ class Siswa extends BaseController
             'jml_saudara' => $this->request->getPost('jml_saudara'),
             'tgl_lahir' => $this->request->getPost('tgl_lahir'),
             'jk' => $this->request->getPost('jk'),
-            'agama' => $this->request->getPost('agama'),
+            'id_agama' => $this->request->getPost('id_agama'),
             'no_telpon' => $this->request->getPost('no_telpon'),
         ];
 

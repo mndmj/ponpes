@@ -7,11 +7,16 @@ use App\Models\ModelTa;
 use App\Models\ModelSiswa;
 use App\Models\ModelJurusan;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Pendaftaran extends BaseController
 {
     public function __construct()
     {
         helper('form');
+        helper('text');
         $this->ModelTa = new ModelTa();
         $this->ModelSiswa = new ModelSiswa();
         $this->ModelJurusan = new ModelJurusan();
@@ -34,11 +39,12 @@ class Pendaftaran extends BaseController
         if ($this->validate([
             'nisn' => [
                 'label' => 'NISN',
-                'rules'  => 'required|max_length[10]|is_unique[tbl_siswa.nisn]',
+                'rules'  => 'required|max_length[10]|is_unique[tbl_siswa.nisn]|numeric',
                 'errors' => [
                     'required' => '*{field} Wajib Diisi !!',
                     'max_length' => '*{field} MAX 10 karakter !!',
                     'is_unique' => '*{field} sudah terdaftar !!',
+                    'numeric' => '*{field} harus angka !!',
                 ],
             ],
             'nama_lengkap' => [
@@ -80,6 +86,19 @@ class Pendaftaran extends BaseController
                     'required' => '*',
                 ],
             ],
+            'id_jurusan' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '*{field} Wajib Diisi !!',
+                ],
+            ],
+            'email' => [
+                'rules'  => 'required|valid_email',
+                'errors' => [
+                    'required' => '*{field} Wajib Diisi !!',
+                    'valid_email' => '*{field} tidak valid !!',
+                ],
+            ],
         ])) {
             //jika tidak ada validasi maka simpan data
             $ta = $this->ModelTa->statusTa();
@@ -88,6 +107,8 @@ class Pendaftaran extends BaseController
             $tanggal = $this->request->getPost('tanggal');
             $no_pendaftaran = $this->ModelSiswa->noPendaftaran();
             $pw = sprintf("%02d", $bulan);
+            $token = random_string('alnum', 6);
+            $mail = new PHPMailer(true);
             $data = [
                 'no_pendaftaran' => $no_pendaftaran,
                 'tgl_pendaftaran' => date('Y-m-d'),
@@ -99,9 +120,37 @@ class Pendaftaran extends BaseController
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
                 'tgl_lahir' => $tahun . '-' . $bulan . '-' . $tanggal,
                 'password' => $pw . $tahun,
+                'email' => $this->request->getPost('email'),
+                'token' => $token,
+                'status_validasi' => '0',
             ];
             $this->ModelSiswa->insert($data);
             session()->setFlashdata('pesan', 'Berhasil mendaftar, silahkan login untuk melengkapi data!!');
+            try {
+                $mail->isSMTP();
+                $mail->Host       = 'smtp.gmail.com';
+                $mail->SMTPAuth   = true;
+                $mail->Username   = 'udinkamarullah@gmail.com'; // ubah dengan alamat email Anda
+                $mail->Password   = 'yaiiatxcetnzyokg'; // ubah dengan password email Anda
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port       = 465;
+
+                $mail->setFrom('udinkamarullah@gmail.com', 'PPI Al-Iman'); // ubah dengan alamat email Anda
+                $mail->addAddress($this->request->getPost('email'));
+                $mail->addReplyTo('udinkamarullah@gmail.com', 'PPI Al-Iman'); // ubah dengan alamat email Anda
+
+                // Isi Email
+                $mail->isHTML(true);
+                $mail->Subject = 'Token Rahasia PPDB';
+                $mail->Body    = 'Token pendaftaran untuk bisa login pada website PPDB PPI Al-Iman ' . $token;
+
+                $mail->send();
+
+                // Pesan Berhasil Kirim Email/Pesan Error
+                session()->setFlashdata('pesan', 'Selamat, email berhasil terkirim!');
+            } catch (Exception $e) {
+                session()->setFlashdata('gagal', "Gagal mengirim email. Error: " . $mail->ErrorInfo);
+            }
             return redirect()->to('/pendaftaran');
         } else {
             //jika ada validasi 

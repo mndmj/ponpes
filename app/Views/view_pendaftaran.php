@@ -23,6 +23,14 @@
                     echo session()->getFlashdata('pesan');
                     echo '</h6></div>';
                 }
+
+                if (session()->getFlashdata('gagal')) {
+                    echo '<div class="alert alert-danger alert-dismissible alertt">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h6><i class="icon fas fa-times"></i>';
+                    echo session()->getFlashdata('gagal');
+                    echo '</h6></div>';
+                }
                 ?>
 
                 <div class="row">
@@ -117,15 +125,27 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label>Jurusan</label>
+                            <small class="text-danger">
+                                <b><?= $validation->hasError('id_jurusan') ? $validation->getError('id_jurusan') : '' ?></b>
+                            </small>
                             <select name="id_jurusan" class="form-control">
                                 <option value="0">--Tidak Ada--</option>
                                 <?php foreach ($jurusan as $key => $value) { ?>
                                     <option value="<?= $value['id_jurusan'] ?>"><?= $value['jurusan'] ?></option>
                                 <?php } ?>
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <small class="text-danger">
+                                <b><?= $validation->hasError('email') ? $validation->getError('email') : '' ?></b>
+                            </small>
+                            <input type="email" name="email" value="<?= old('email') ?>" class="form-control" placeholder="Email">
                         </div>
                     </div>
                     <div class="col-sm-12">

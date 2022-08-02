@@ -110,6 +110,16 @@ class Auth extends BaseController
                 session()->set('nisn', $cek_login['nisn']);
                 session()->set('nama_lengkap', $cek_login['nama_lengkap']);
                 session()->set('level', 'siswa');
+                $token = \Config\Database::connect()->table('tbl_siswa')->where('nisn', $this->request->getVar('nisn'))
+                    ->get()->getResultArray();
+
+                if (count($token) == 0) {
+                    //
+                } else {
+                    if ($token[0]['status_validasi'] == 0) {
+                        return redirect()->to('/auth/inputToken');
+                    }
+                }
                 return redirect()->to('/siswa');
             } else {
                 session()->setFlashdata('salah', 'NISN atau Password salah..!!');
@@ -120,6 +130,53 @@ class Auth extends BaseController
             $validation = \Config\Services::validation();
             return redirect()->to('/auth/loginSiswa')->withInput()->with('validation', $validation);
         }
+    }
+
+    public function token()
+    {
+        if ($this->validate([
+            'token' => [
+                'label' => 'Token',
+                'rules'  => 'required|max_length[6]',
+                'errors' => [
+                    'required' => '*{field} Wajib Diisi !!',
+                    'max_length' => '*{field} MAX karakter !!',
+                ],
+            ],
+        ])) {
+            $tabel = \Config\Database::connect()->table('tbl_siswa');
+            $token = $tabel->where('nisn', session('nisn'))
+                ->get()->getResultArray();
+
+            if (count($token) == 0) {
+                //
+            } else {
+                if ($token[0]['token'] == $this->request->getVar('token')) {
+                    //jika benar
+                    $data = [
+                        'status_validasi' => '1',
+                    ];
+                    $tabel->update($data, "nisn='" . session('nisn') . "'");
+                    return redirect()->to('/siswa');
+                } else {
+                    //jika salah token
+                    session()->setFlashdata('salah', 'Token salah..!!');
+                    return redirect()->to('/auth/inputToken');
+                }
+            }
+        } else {
+            # code...
+        }
+    }
+
+    public function inputToken()
+    {
+        $data = [
+            'title' => 'PPDB',
+            'subtitle' => 'Token',
+            'validation' => \Config\Services::validation(),
+        ];
+        return view('view_token', $data);
     }
 
     public function logout_siswa()

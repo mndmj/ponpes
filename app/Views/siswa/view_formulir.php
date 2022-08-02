@@ -515,7 +515,7 @@
                 <center>
                     <img src="<?= base_url('sukses/sukses.png') ?>" class="w-75">
                 </center>
-                <h6>"Data pendaftaran yang sudah di kirim tidak dapat diubah kembali, pastikan Anda telah mengisi data dengan benar !!"</h6>
+                <h5>"Data pendaftaran yang sudah di kirim tidak dapat diubah kembali, pastikan Anda telah mengisi data dengan benar dan pastikan kembali data terisi dan tidak kosong !!"</h5>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Tidak</button>
@@ -561,7 +561,6 @@
                 </div>
                 <div class="form-group">
                     <label>Jurusan</label>
-                    <label class="text-danger">(Pilih jika ada)</label>
                     <small class="text-danger">
                         <b><?= $validation->hasError('jk') ? $validation->getError('jk') : '' ?></b>
                     </small>
